@@ -28,32 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonCreateMatrix = new System.Windows.Forms.Button();
+            this.buttonShowMatrix = new System.Windows.Forms.Button();
             this.groupBoxHierarchy = new System.Windows.Forms.GroupBox();
             this.buttonClearNode = new System.Windows.Forms.Button();
-            this.buttonDel = new System.Windows.Forms.Button();
+            this.buttonDelNode = new System.Windows.Forms.Button();
             this.buttonAddSub = new System.Windows.Forms.Button();
             this.buttonAddRoot = new System.Windows.Forms.Button();
             this.treeViewHierarchy = new System.Windows.Forms.TreeView();
             this.groupBoxMatrix = new System.Windows.Forms.GroupBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.buttonPairWise = new System.Windows.Forms.Button();
             this.groupBoxHierarchy.SuspendLayout();
+            this.groupBoxMatrix.SuspendLayout();
             this.SuspendLayout();
             // 
-            // buttonCreateMatrix
+            // buttonShowMatrix
             // 
-            this.buttonCreateMatrix.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonCreateMatrix.Location = new System.Drawing.Point(357, 434);
-            this.buttonCreateMatrix.Name = "buttonCreateMatrix";
-            this.buttonCreateMatrix.Size = new System.Drawing.Size(123, 41);
-            this.buttonCreateMatrix.TabIndex = 6;
-            this.buttonCreateMatrix.Text = "Create matrix";
-            this.buttonCreateMatrix.UseVisualStyleBackColor = true;
-            this.buttonCreateMatrix.Click += new System.EventHandler(this.buttonCreateMatrix_Click);
+            this.buttonShowMatrix.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonShowMatrix.Location = new System.Drawing.Point(13, 389);
+            this.buttonShowMatrix.Name = "buttonShowMatrix";
+            this.buttonShowMatrix.Size = new System.Drawing.Size(68, 41);
+            this.buttonShowMatrix.TabIndex = 6;
+            this.buttonShowMatrix.Text = "Show";
+            this.buttonShowMatrix.UseVisualStyleBackColor = true;
+            this.buttonShowMatrix.Click += new System.EventHandler(this.buttonCreateMatrix_Click);
             // 
             // groupBoxHierarchy
             // 
+            this.groupBoxHierarchy.Controls.Add(this.buttonPairWise);
             this.groupBoxHierarchy.Controls.Add(this.buttonClearNode);
-            this.groupBoxHierarchy.Controls.Add(this.buttonDel);
+            this.groupBoxHierarchy.Controls.Add(this.buttonDelNode);
             this.groupBoxHierarchy.Controls.Add(this.buttonAddSub);
             this.groupBoxHierarchy.Controls.Add(this.buttonAddRoot);
             this.groupBoxHierarchy.Controls.Add(this.treeViewHierarchy);
@@ -67,27 +71,27 @@
             // buttonClearNode
             // 
             this.buttonClearNode.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonClearNode.Location = new System.Drawing.Point(150, 431);
+            this.buttonClearNode.Location = new System.Drawing.Point(105, 431);
             this.buttonClearNode.Name = "buttonClearNode";
-            this.buttonClearNode.Size = new System.Drawing.Size(93, 32);
+            this.buttonClearNode.Size = new System.Drawing.Size(60, 32);
             this.buttonClearNode.TabIndex = 10;
             this.buttonClearNode.Text = "Clear";
             this.buttonClearNode.UseVisualStyleBackColor = true;
             // 
-            // buttonDel
+            // buttonDelNode
             // 
-            this.buttonDel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonDel.Location = new System.Drawing.Point(150, 389);
-            this.buttonDel.Name = "buttonDel";
-            this.buttonDel.Size = new System.Drawing.Size(93, 32);
-            this.buttonDel.TabIndex = 9;
-            this.buttonDel.Text = "Del node";
-            this.buttonDel.UseVisualStyleBackColor = true;
+            this.buttonDelNode.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonDelNode.Location = new System.Drawing.Point(105, 389);
+            this.buttonDelNode.Name = "buttonDelNode";
+            this.buttonDelNode.Size = new System.Drawing.Size(60, 32);
+            this.buttonDelNode.TabIndex = 9;
+            this.buttonDelNode.Text = "Del";
+            this.buttonDelNode.UseVisualStyleBackColor = true;
             // 
             // buttonAddSub
             // 
             this.buttonAddSub.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonAddSub.Location = new System.Drawing.Point(34, 431);
+            this.buttonAddSub.Location = new System.Drawing.Point(6, 431);
             this.buttonAddSub.Name = "buttonAddSub";
             this.buttonAddSub.Size = new System.Drawing.Size(93, 32);
             this.buttonAddSub.TabIndex = 8;
@@ -97,7 +101,7 @@
             // buttonAddRoot
             // 
             this.buttonAddRoot.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonAddRoot.Location = new System.Drawing.Point(34, 389);
+            this.buttonAddRoot.Location = new System.Drawing.Point(6, 389);
             this.buttonAddRoot.Name = "buttonAddRoot";
             this.buttonAddRoot.Size = new System.Drawing.Size(93, 32);
             this.buttonAddRoot.TabIndex = 7;
@@ -107,19 +111,40 @@
             // treeViewHierarchy
             // 
             this.treeViewHierarchy.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.treeViewHierarchy.Location = new System.Drawing.Point(6, 20);
+            this.treeViewHierarchy.Location = new System.Drawing.Point(9, 19);
             this.treeViewHierarchy.Name = "treeViewHierarchy";
             this.treeViewHierarchy.Size = new System.Drawing.Size(278, 363);
             this.treeViewHierarchy.TabIndex = 6;
             // 
             // groupBoxMatrix
             // 
+            this.groupBoxMatrix.Controls.Add(this.listBox1);
+            this.groupBoxMatrix.Controls.Add(this.buttonShowMatrix);
             this.groupBoxMatrix.Location = new System.Drawing.Point(312, 12);
             this.groupBoxMatrix.Name = "groupBoxMatrix";
-            this.groupBoxMatrix.Size = new System.Drawing.Size(273, 383);
+            this.groupBoxMatrix.Size = new System.Drawing.Size(273, 473);
             this.groupBoxMatrix.TabIndex = 8;
             this.groupBoxMatrix.TabStop = false;
             this.groupBoxMatrix.Text = "Matrix";
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 12;
+            this.listBox1.Location = new System.Drawing.Point(13, 20);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(254, 352);
+            this.listBox1.TabIndex = 0;
+            // 
+            // buttonPairWise
+            // 
+            this.buttonPairWise.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonPairWise.Location = new System.Drawing.Point(171, 389);
+            this.buttonPairWise.Name = "buttonPairWise";
+            this.buttonPairWise.Size = new System.Drawing.Size(113, 32);
+            this.buttonPairWise.TabIndex = 11;
+            this.buttonPairWise.Text = "Pair wise...";
+            this.buttonPairWise.UseVisualStyleBackColor = true;
             // 
             // FormAHP
             // 
@@ -128,25 +153,27 @@
             this.ClientSize = new System.Drawing.Size(739, 494);
             this.Controls.Add(this.groupBoxMatrix);
             this.Controls.Add(this.groupBoxHierarchy);
-            this.Controls.Add(this.buttonCreateMatrix);
             this.Name = "FormAHP";
             this.Text = "AHP Calculator";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBoxHierarchy.ResumeLayout(false);
+            this.groupBoxMatrix.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button buttonCreateMatrix;
+        private System.Windows.Forms.Button buttonShowMatrix;
         private System.Windows.Forms.GroupBox groupBoxHierarchy;
         private System.Windows.Forms.Button buttonClearNode;
-        private System.Windows.Forms.Button buttonDel;
+        private System.Windows.Forms.Button buttonDelNode;
         private System.Windows.Forms.Button buttonAddSub;
         private System.Windows.Forms.Button buttonAddRoot;
         private System.Windows.Forms.TreeView treeViewHierarchy;
         private System.Windows.Forms.GroupBox groupBoxMatrix;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button buttonPairWise;
     }
 }
 

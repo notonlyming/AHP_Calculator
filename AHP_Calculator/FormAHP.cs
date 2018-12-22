@@ -55,36 +55,8 @@ namespace AHP_Calculator
 
         private void buttonCreateMatrix_Click(object sender, EventArgs e)
         {
-            const int matrixSize = 5;
-            TextBox[,] textBoxes = new TextBox[matrixSize,matrixSize];
-            for (int i = 0; i < matrixSize; i++)
-            {
-                for (int j = 0; j < matrixSize; j++)
-                {
-                    textBoxes[i, j] = new TextBox();
-                    textBoxes[i, j].MaxLength = 1;
-                    textBoxes[i, j].Font= new Font(new FontFamily("微软雅黑"),12,new FontStyle());
-                    textBoxes[i, j].TextAlign = HorizontalAlignment.Center;
-                    textBoxes[i, j].Size = new Size(30, 30);
-
-                    groupBoxMatrix.Controls.Add(textBoxes[i, j]);
-                    if (i==0 && j==0)
-                    {
-                        textBoxes[i, j].Left = 29;
-                        textBoxes[i, j].Top = 61;
-                    }
-                    else if (j == 0)
-                    {
-                        textBoxes[i, j].Left = textBoxes[i-1, j].Left;
-                        textBoxes[i, j].Top = textBoxes[i-1, j].Top + textBoxes[i-1,j].Height;
-                    }
-                    else
-                    {
-                        textBoxes[i, j].Top = textBoxes[i, 0].Top;
-                        textBoxes[i, j].Left = textBoxes[i, j - 1].Left + textBoxes[i, j - 1].Width;
-                    }
-                }
-            }
+            FormMatrix formMatrix = new FormMatrix(new string[,] { { "1", "3" }, { "5", "7" } }, new string[] { "factor1", "factor2" }, "parent");
+            formMatrix.Show();
         }
     }
 }
