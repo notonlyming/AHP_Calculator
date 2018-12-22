@@ -61,8 +61,18 @@ namespace AHP_Calculator
 
         private void buttonPairWise_Click(object sender, EventArgs e)
         {
-            FormSurvey formSurvey = new FormSurvey(new string[4] { "B1", "B2", "B3", "B4" }, "B");
+            FormSurvey formSurvey = new FormSurvey(new string[4] { "B1", "B2", "B3", "B4" }, "B",
+                new string[4, 4] {
+                    { "1",null,null,null},
+                    { "3","1",null,null },
+                    { "1","1/5","1",null},
+                    { "7" ,"3","5","1"} });
             formSurvey.Show();
+        }
+
+        private void buttonScan_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
