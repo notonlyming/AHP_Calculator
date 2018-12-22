@@ -12,14 +12,15 @@ namespace AHP_Calculator
 {
     public partial class FormMatrix : Form
     {
-        string[,] PairMatrix;
-        string[] Factor;
-        Label[] LabelRowFactors;
-        Label[] LabelColumnFactors;
-        Label LabelParentFactor;
-        TextBox[,] textBoxes;
-        Point contralMargin = new Point(5, 5);
-        Size UniformSize = new Size(60, 30);
+        private string[,] PairMatrix;
+        private string[] Factor;
+        private Label[] LabelRowFactors;
+        private Label[] LabelColumnFactors;
+        private Label LabelParentFactor;
+        private TextBox[,] textBoxes;
+        private Point contralMargin = new Point(5, 5);
+        private Font defaultFont = new Font(new FontFamily("微软雅黑"), 12, new FontStyle());
+        private Size UniformSize = new Size(60, 30);
         public FormMatrix(string[,] PairMatrix, string[] Factor, string ParentFactor)
         {
             InitializeComponent();
@@ -33,6 +34,7 @@ namespace AHP_Calculator
                 Text = ParentFactor,
                 Location = contralMargin,
                 Size = UniformSize,
+                Font = defaultFont,
                 TextAlign = ContentAlignment.MiddleCenter
             };
             toolTip1.SetToolTip(LabelParentFactor, ParentFactor);
@@ -50,12 +52,14 @@ namespace AHP_Calculator
                 {
                     Text = Factor[i],
                     Size = UniformSize,
+                    Font = defaultFont,
                     TextAlign = ContentAlignment.MiddleCenter
                 };
                 LabelColumnFactors[i] = new Label
                 {
                     Text = Factor[i],
                     Size = UniformSize,
+                    Font = defaultFont,
                     TextAlign = ContentAlignment.MiddleCenter
                 };
                 //set text for fators labels
@@ -64,17 +68,13 @@ namespace AHP_Calculator
                 //put label
                 if (i == 0)
                 {
-                    LabelColumnFactors[i].Top = LabelParentFactor.Top;
-                    LabelColumnFactors[i].Left = LabelParentFactor.Left + LabelParentFactor.Width;
-                    LabelRowFactors[i].Top = LabelParentFactor.Top + LabelParentFactor.Height;
-                    LabelRowFactors[i].Left = LabelParentFactor.Left;
+                    LabelColumnFactors[i].Location = new Point(LabelParentFactor.Left + LabelParentFactor.Width, LabelParentFactor.Top);
+                    LabelRowFactors[i].Location = new Point(LabelParentFactor.Left,LabelParentFactor.Top + LabelParentFactor.Height);
                 }
                 else
                 {
-                    LabelColumnFactors[i].Top = LabelParentFactor.Top;
-                    LabelColumnFactors[i].Left = LabelColumnFactors[i - 1].Left + LabelColumnFactors[i - 1].Width;
-                    LabelRowFactors[i].Top = LabelRowFactors[i - 1].Top + LabelRowFactors[i - 1].Height;
-                    LabelRowFactors[i].Left = LabelParentFactor.Left;
+                    LabelColumnFactors[i].Location = new Point(LabelColumnFactors[i - 1].Left + LabelColumnFactors[i - 1].Width,LabelParentFactor.Top);
+                    LabelRowFactors[i].Location = new Point(LabelParentFactor.Left,LabelRowFactors[i - 1].Top + LabelRowFactors[i - 1].Height);
                 }
                 this.Controls.Add(LabelColumnFactors[i]);
                 this.Controls.Add(LabelRowFactors[i]);
@@ -88,7 +88,7 @@ namespace AHP_Calculator
                     textBoxes[i, j] = new TextBox
                     {
                         MaxLength = 1,
-                        Font = new Font(new FontFamily("微软雅黑"), 12, new FontStyle()),
+                        Font = defaultFont,
                         TextAlign = HorizontalAlignment.Center,
                         Size = UniformSize
                     };

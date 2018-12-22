@@ -45,9 +45,9 @@
             // buttonShowMatrix
             // 
             this.buttonShowMatrix.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonShowMatrix.Location = new System.Drawing.Point(13, 389);
+            this.buttonShowMatrix.Location = new System.Drawing.Point(164, 431);
             this.buttonShowMatrix.Name = "buttonShowMatrix";
-            this.buttonShowMatrix.Size = new System.Drawing.Size(68, 41);
+            this.buttonShowMatrix.Size = new System.Drawing.Size(68, 32);
             this.buttonShowMatrix.TabIndex = 6;
             this.buttonShowMatrix.Text = "Show";
             this.buttonShowMatrix.UseVisualStyleBackColor = true;
@@ -55,7 +55,6 @@
             // 
             // groupBoxHierarchy
             // 
-            this.groupBoxHierarchy.Controls.Add(this.buttonPairWise);
             this.groupBoxHierarchy.Controls.Add(this.buttonClearNode);
             this.groupBoxHierarchy.Controls.Add(this.buttonDelNode);
             this.groupBoxHierarchy.Controls.Add(this.buttonAddSub);
@@ -71,42 +70,46 @@
             // buttonClearNode
             // 
             this.buttonClearNode.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonClearNode.Location = new System.Drawing.Point(105, 431);
+            this.buttonClearNode.Location = new System.Drawing.Point(185, 431);
             this.buttonClearNode.Name = "buttonClearNode";
             this.buttonClearNode.Size = new System.Drawing.Size(60, 32);
             this.buttonClearNode.TabIndex = 10;
             this.buttonClearNode.Text = "Clear";
             this.buttonClearNode.UseVisualStyleBackColor = true;
+            this.buttonClearNode.Click += new System.EventHandler(this.buttonClearNode_Click);
             // 
             // buttonDelNode
             // 
             this.buttonDelNode.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonDelNode.Location = new System.Drawing.Point(105, 389);
+            this.buttonDelNode.Location = new System.Drawing.Point(185, 389);
             this.buttonDelNode.Name = "buttonDelNode";
             this.buttonDelNode.Size = new System.Drawing.Size(60, 32);
             this.buttonDelNode.TabIndex = 9;
             this.buttonDelNode.Text = "Del";
             this.buttonDelNode.UseVisualStyleBackColor = true;
+            this.buttonDelNode.Click += new System.EventHandler(this.buttonDel_Click);
             // 
             // buttonAddSub
             // 
             this.buttonAddSub.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonAddSub.Location = new System.Drawing.Point(6, 431);
+            this.buttonAddSub.Location = new System.Drawing.Point(45, 431);
             this.buttonAddSub.Name = "buttonAddSub";
             this.buttonAddSub.Size = new System.Drawing.Size(93, 32);
             this.buttonAddSub.TabIndex = 8;
             this.buttonAddSub.Text = "Add sub";
             this.buttonAddSub.UseVisualStyleBackColor = true;
+            this.buttonAddSub.Click += new System.EventHandler(this.buttonAddSub_Click);
             // 
             // buttonAddRoot
             // 
             this.buttonAddRoot.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonAddRoot.Location = new System.Drawing.Point(6, 389);
+            this.buttonAddRoot.Location = new System.Drawing.Point(45, 389);
             this.buttonAddRoot.Name = "buttonAddRoot";
             this.buttonAddRoot.Size = new System.Drawing.Size(93, 32);
             this.buttonAddRoot.TabIndex = 7;
             this.buttonAddRoot.Text = "Add root";
             this.buttonAddRoot.UseVisualStyleBackColor = true;
+            this.buttonAddRoot.Click += new System.EventHandler(this.buttonAddRoot_Click);
             // 
             // treeViewHierarchy
             // 
@@ -118,6 +121,7 @@
             // 
             // groupBoxMatrix
             // 
+            this.groupBoxMatrix.Controls.Add(this.buttonPairWise);
             this.groupBoxMatrix.Controls.Add(this.listBox1);
             this.groupBoxMatrix.Controls.Add(this.buttonShowMatrix);
             this.groupBoxMatrix.Location = new System.Drawing.Point(312, 12);
@@ -131,20 +135,21 @@
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new System.Drawing.Point(13, 20);
+            this.listBox1.Location = new System.Drawing.Point(11, 20);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(254, 352);
+            this.listBox1.Size = new System.Drawing.Size(254, 364);
             this.listBox1.TabIndex = 0;
             // 
             // buttonPairWise
             // 
             this.buttonPairWise.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonPairWise.Location = new System.Drawing.Point(171, 389);
+            this.buttonPairWise.Location = new System.Drawing.Point(27, 431);
             this.buttonPairWise.Name = "buttonPairWise";
             this.buttonPairWise.Size = new System.Drawing.Size(113, 32);
             this.buttonPairWise.TabIndex = 11;
             this.buttonPairWise.Text = "Pair wise...";
             this.buttonPairWise.UseVisualStyleBackColor = true;
+            this.buttonPairWise.Click += new System.EventHandler(this.buttonPairWise_Click);
             // 
             // FormAHP
             // 

@@ -58,6 +58,12 @@ namespace AHP_Calculator
             FormMatrix formMatrix = new FormMatrix(new string[,] { { "1", "3" }, { "5", "7" } }, new string[] { "factor1", "factor2" }, "parent");
             formMatrix.Show();
         }
+
+        private void buttonPairWise_Click(object sender, EventArgs e)
+        {
+            FormSurvey formSurvey = new FormSurvey(new string[4] { "B1", "B2", "B3", "B4" }, "B");
+            formSurvey.Show();
+        }
     }
 }
 
