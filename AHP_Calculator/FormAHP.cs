@@ -11,7 +11,6 @@ using System.Collections;
 
 namespace AHP_Calculator
 {
-
     public partial class FormAHP : Form
     {
         private ArrayList MatrixList;  //用于存储该层次中的所有成对比较矩阵
@@ -119,69 +118,62 @@ namespace AHP_Calculator
 
         private void buttonScan_Click(object sender, EventArgs e)
         {
-            //把层次中的每一层扫描出来
-            TreeNode currentNode;
-            LayerList.Clear();  //清除原先的东西
-            Queue<TreeNode> childrenQue = new Queue<TreeNode>();  //孩儿们，快来排队呀~
-            PutChildrenIntoQueue(treeViewHierarchy.Nodes, childrenQue);  //第一波父亲进入队列
-            LayerList.Add(treeViewHierarchy.Nodes);  //第一层已被加入列表
-            while (childrenQue.Count() > 0)  //找儿子，直到没有要找儿子的父亲
+            if (MessageBox.Show("This operation will clear all privious pair-wise matrix, continue?",
+                "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2, 0)
+                == DialogResult.Yes)
             {
-                currentNode = childrenQue.Dequeue();  //排头出列
-                if (GetNodeChildren(currentNode).Count != 0)
+                //把层次中的每一层扫描出来
+                TreeNode currentNode;
+                LayerList.Clear();  //清除原先的东西
+                Queue<TreeNode> childrenQue = new Queue<TreeNode>();  //孩儿们，快来排队呀~
+                PutChildrenIntoQueue(treeViewHierarchy.Nodes, childrenQue);  //第一波父亲进入队列
+                LayerList.Add(treeViewHierarchy.Nodes);  //第一层已被加入列表
+                while (childrenQue.Count() > 0)  //找儿子，直到没有要找儿子的父亲
                 {
-                    //如果有儿子，把儿子加入队列并把儿子们加入数组
-                    PutChildrenIntoQueue(GetNodeChildren(currentNode), childrenQue);
-                    LayerList.Add(GetNodeChildren(currentNode));
+                    currentNode = childrenQue.Dequeue();  //排头出列
+                    if (GetNodeChildren(currentNode).Count != 0)
+                    {
+                        //如果有儿子，把儿子加入队列并把儿子们加入数组
+                        PutChildrenIntoQueue(GetNodeChildren(currentNode), childrenQue);
+                        LayerList.Add(GetNodeChildren(currentNode));
+                    }
+                }
+
+                //将获得的层次加入列表框
+                listBox1.Items.Clear();  //先清除之前的结果，在添加新扫描的结果
+                foreach (TreeNodeCollection layer in LayerList)
+                {
+                    TreeNode parentNode = layer[0].Parent;
+                    if (parentNode == null)
+                    {
+                        //如果为空，说明是顶层，没了爸爸，好惨
+                        listBox1.Items.Add("Top, no matrix");
+                    }
+                    else
+                    {
+                        //加入列表
+                        listBox1.Items.Add("Pait-wise Matrix in " + parentNode.Text);
+                    }
+                }
+
+                //为每一层构造成对比较矩阵
+                MatrixList.Clear();  //每次重新生成前清除之前的结果
+                foreach (TreeNodeCollection layer in LayerList)
+                {
+                    TreeNode parentNode = layer[0].Parent;
+                    if (parentNode != null)
+                    {
+                        //如果不为空，加入列表
+                        MatrixList.Add(MakePairWiseMatrix(layer.Count));
+                    }
+                    else
+                    {
+                        //如果为空，还是加入，避免无法一一对应
+                        MatrixList.Add(null);
+                    }
                 }
             }
 
-            //合成字符串
-            /*
-            StringBuilder stringBuildertmp = new StringBuilder();
-            foreach (TreeNodeCollection layer in LayerList)  //取出每层
-            {
-                foreach (TreeNode node in layer)  //取出每个
-                {
-                    stringBuildertmp.Append(node.Text + " ");  //加入字符串，空格分隔
-                }
-                stringBuildertmp.Append("\n");  //每层换行
-            }
-            MessageBox.Show(stringBuildertmp.ToString());
-            */
-
-            //将获得的层次加入列表框
-            listBox1.Items.Clear();  //先清除之前的结果，在添加新扫描的结果
-            foreach (TreeNodeCollection layer in LayerList)
-            {
-                TreeNode parentNode = layer[0].Parent;
-                if (parentNode == null)
-                {
-                    //如果为空，说明是顶层，没了爸爸，好惨
-                    listBox1.Items.Add("Top, no matrix");
-                }
-                else
-                {
-                    //加入列表
-                    listBox1.Items.Add("Pait-wise Matrix in " + parentNode.Text);
-                }
-            }
-
-            //为每一层构造成对比较矩阵
-            foreach (TreeNodeCollection layer in LayerList)
-            {
-                TreeNode parentNode = layer[0].Parent;
-                if (parentNode != null)
-                {
-                    //如果不为空，加入列表
-                    MatrixList.Add(MakePairWiseMatrix(layer.Count));
-                }
-                else
-                {
-                    //如果为空，还是加入，避免无法一一对应
-                    MatrixList.Add(null);
-                }
-            }
         }
 
         private void PutChildrenIntoQueue(TreeNodeCollection nodes, Queue<TreeNode> childrenQue)
