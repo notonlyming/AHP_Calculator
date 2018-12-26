@@ -24,101 +24,16 @@ namespace AHP_Calculator
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
             treeViewHierarchy.ExpandAll();  //把层次结构展开来看
-        }
-
-        private void buttonAddRoot_Click(object sender, EventArgs e)
-        {
-            treeViewHierarchy.Nodes.Add(Microsoft.VisualBasic.Interaction.InputBox("Please enter node text.", "Title needed"));
-        }
-
-        private void buttonAddSub_Click(object sender, EventArgs e)
-        {
-            if (treeViewHierarchy.SelectedNode != null)
+            if (treeViewHierarchy.Nodes.Count > 0)
             {
-                treeViewHierarchy.SelectedNode.Nodes.Add(Microsoft.VisualBasic.Interaction.InputBox("Please enter node text.", "Title needed"));
+                treeViewHierarchy.SelectedNode = treeViewHierarchy.Nodes[0];
             }
         }
 
-        private void buttonDel_Click(object sender, EventArgs e)
+        private void ScanLevel()
         {
-            TreeNode NodeSelect = treeViewHierarchy.SelectedNode;
-            if (NodeSelect != null)
-            {
-                treeViewHierarchy.Nodes.Remove(NodeSelect);
-            }
 
-        }
-
-        private void buttonClearNode_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Want to clear? This will reset this project!!!", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-            {
-                treeViewHierarchy.Nodes.Clear();
-                buttonScan_Click(new object(),new EventArgs());
-            }
-        }
-
-        private void buttonCreateMatrix_Click(object sender, EventArgs e)
-        {
-            if (listBox1.SelectedIndex != -1)
-            {
-                TreeNodeCollection CurrentLayer = ((TreeNodeCollection[])LayerList.ToArray(typeof(TreeNodeCollection)))[listBox1.SelectedIndex];
-                string[,] CurrentMatrix = ((string[][,])MatrixList.ToArray(typeof(string[,])))[listBox1.SelectedIndex];
-
-                if (CurrentMatrix == null)
-                {
-                    MessageBox.Show("No matrix!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, 0);
-                    return;  //如果矩阵为空，不进行下面的操作
-                }
-
-                //取出该层因素
-                string[] FactorsString = new string[CurrentLayer.Count];
-                int i = 0;
-                foreach (TreeNode node in CurrentLayer)
-                {
-                    FactorsString[i] = node.Text;
-                    i++;
-                }
-
-                FormMatrix formMatrix = new FormMatrix(CurrentMatrix, FactorsString, CurrentLayer[0].Parent.Text);
-                formMatrix.Show();
-            }
-
-        }
-
-        private void buttonPairWise_Click(object sender, EventArgs e)
-        {
-            if (listBox1.SelectedIndex != -1)
-            {
-                //取出被选层矩阵因素，构造因素字符串数组
-                //下面这一行表示从选择的列表框中取出选中的行号索引，到对应的层去找那个孩子集合，取孩子个数，即因素个数，构造相同大小的因素字符串数组
-                TreeNodeCollection CurrentLayer = ((TreeNodeCollection[])LayerList.ToArray(typeof(TreeNodeCollection)))[listBox1.SelectedIndex];
-                string[,] CurrentMatrix = ((string[][,])MatrixList.ToArray(typeof(string[,])))[listBox1.SelectedIndex];
-
-                if (CurrentMatrix == null)
-                {
-                    MessageBox.Show("No matrix!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, 0);
-                    return;  //如果矩阵为空，不进行下面的操作
-                }
-
-                string[] FactorsString = new string[CurrentLayer.Count];
-                int i = 0;
-                //取出该层因素
-                foreach (TreeNode node in CurrentLayer)
-                {
-                    FactorsString[i] = node.Text;
-                    i++;
-                }
-                FormSurvey formSurvey = new FormSurvey(FactorsString, CurrentLayer[0].Parent.Text, CurrentMatrix);
-                formSurvey.Show();
-            }
-
-        }
-
-        private void buttonScan_Click(object sender, EventArgs e)
-        {
             if (treeViewHierarchy.Nodes.Count == 0)
             {
                 //如果层次还没建立，重新扫描导致各种清空
@@ -183,7 +98,6 @@ namespace AHP_Calculator
                     }
                 }
             }
-
         }
 
         private void PutChildrenIntoQueue(TreeNodeCollection nodes, Queue<TreeNode> childrenQue)
@@ -238,6 +152,104 @@ namespace AHP_Calculator
                     }
                 }
                 return max + 1;
+            }
+        }
+
+        private void hireToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rootToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            treeViewHierarchy.Nodes.Add(Microsoft.VisualBasic.Interaction.InputBox("Please enter node text.", "Title needed"));
+        }
+
+        private void delToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            TreeNode NodeSelect = treeViewHierarchy.SelectedNode;
+            if (NodeSelect != null)
+            {
+                treeViewHierarchy.Nodes.Remove(NodeSelect);
+            }
+        }
+
+        private void subToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (treeViewHierarchy.SelectedNode != null)
+            {
+                treeViewHierarchy.SelectedNode.Nodes.Add(Microsoft.VisualBasic.Interaction.InputBox("Please enter node text.", "Title needed"));
+            }
+        }
+
+        private void clearToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Want to clear? This will reset this project!!!", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            {
+                treeViewHierarchy.Nodes.Clear();
+                ScanLevel();
+            }
+        }
+
+        private void scanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ScanLevel();
+        }
+
+        private void showToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex != -1)
+            {
+                TreeNodeCollection CurrentLayer = ((TreeNodeCollection[])LayerList.ToArray(typeof(TreeNodeCollection)))[listBox1.SelectedIndex];
+                string[,] CurrentMatrix = ((string[][,])MatrixList.ToArray(typeof(string[,])))[listBox1.SelectedIndex];
+
+                if (CurrentMatrix == null)
+                {
+                    MessageBox.Show("No matrix!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, 0);
+                    return;  //如果矩阵为空，不进行下面的操作
+                }
+
+                //取出该层因素
+                string[] FactorsString = new string[CurrentLayer.Count];
+                int i = 0;
+                foreach (TreeNode node in CurrentLayer)
+                {
+                    FactorsString[i] = node.Text;
+                    i++;
+                }
+
+                FormMatrix formMatrix = new FormMatrix(CurrentMatrix, FactorsString, CurrentLayer[0].Parent.Text);
+                formMatrix.Show();
+            }
+        }
+
+        private void pairWiseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (listBox1.SelectedIndex != -1)
+            {
+                //取出被选层矩阵因素，构造因素字符串数组
+                //下面这一行表示从选择的列表框中取出选中的行号索引，到对应的层去找那个孩子集合，取孩子个数，即因素个数，构造相同大小的因素字符串数组
+                TreeNodeCollection CurrentLayer = ((TreeNodeCollection[])LayerList.ToArray(typeof(TreeNodeCollection)))[listBox1.SelectedIndex];
+                string[,] CurrentMatrix = ((string[][,])MatrixList.ToArray(typeof(string[,])))[listBox1.SelectedIndex];
+
+                if (CurrentMatrix == null)
+                {
+                    MessageBox.Show("No matrix!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, 0);
+                    return;  //如果矩阵为空，不进行下面的操作
+                }
+
+                string[] FactorsString = new string[CurrentLayer.Count];
+                int i = 0;
+                //取出该层因素
+                foreach (TreeNode node in CurrentLayer)
+                {
+                    FactorsString[i] = node.Text;
+                    i++;
+                }
+                FormSurvey formSurvey = new FormSurvey(FactorsString, CurrentLayer[0].Parent.Text, CurrentMatrix);
+                formSurvey.Show();
             }
         }
     }
