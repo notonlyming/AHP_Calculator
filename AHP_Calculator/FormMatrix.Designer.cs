@@ -37,9 +37,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(347, 255);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormMatrix";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form2";
+            this.Text = "Matrix Viewer";
             this.Load += new System.EventHandler(this.FormMatrix_Load);
             this.ResumeLayout(false);
 

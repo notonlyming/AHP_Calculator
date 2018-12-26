@@ -33,7 +33,12 @@ namespace AHP_Calculator
             ComboBoxImportantTimes = new ComboBox[labelQuestions.Length];
             for (int i = 0; i < ComboBoxImportantTimes.Length; i++)
             {
-                ComboBoxImportantTimes[i] = new ComboBox();
+                ComboBoxImportantTimes[i] = new ComboBox
+                {
+                    DropDownStyle = ComboBoxStyle.DropDownList,
+                    Text = "Importance level",
+                    Font = defaultFont
+                };
                 ComboBoxImportantTimes[i].SelectionChangeCommitted += new System.EventHandler(this.AnswerChanged);
                 ComboBoxImportantTimes[i].Items.Add("1 - 同等重要");
                 ComboBoxImportantTimes[i].Items.Add("3 - 稍微重要");
@@ -65,19 +70,24 @@ namespace AHP_Calculator
                 labelQuestions[i] = new Label
                 {
                     Text = "考虑 " + factors[positionInPairMatrix[0]] + " 和 " + factors[positionInPairMatrix[1]] +
-                    "在" + parentFactor + "方面那个更重要。 重要多少倍？",
+                    " 在 " + parentFactor + " 方面那个更重要，重要多少倍？",
                     AutoSize = true,
                     Font = defaultFont
                 };
                 flowLayoutPanel1.Controls.Add(labelQuestions[i]);
-                //add answer control
-                ComboBoxReverseOrNot[i] = new ComboBox();
+                //Add answer control
+                ComboBoxReverseOrNot[i] = new ComboBox
+                {
+                    DropDownStyle = ComboBoxStyle.DropDownList,
+                    Text = "Which is more important",
+                    Font = defaultFont
+                };
                 ComboBoxReverseOrNot[i].SelectionChangeCommitted += new System.EventHandler(this.AnswerChanged);
                 ComboBoxReverseOrNot[i].Items.Add(factors[positionInPairMatrix[0]]);
                 ComboBoxReverseOrNot[i].Items.Add(factors[positionInPairMatrix[1]]);
                 flowLayoutPanel1.Controls.Add(ComboBoxReverseOrNot[i]);
                 flowLayoutPanel1.Controls.Add(ComboBoxImportantTimes[i]);
-                //load privious answer
+                //Load privious answer
                 if (pairWiseMatrix[positionInPairMatrix[0], positionInPairMatrix[1]].Equals("0") == false)
                 {
                     if (pairWiseMatrix[positionInPairMatrix[0], positionInPairMatrix[1]].IndexOf("1/") == 0)

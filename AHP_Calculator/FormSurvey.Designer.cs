@@ -40,16 +40,17 @@
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(683, 493);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(515, 460);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // FormSurvey
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(683, 493);
+            this.ClientSize = new System.Drawing.Size(515, 460);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "FormSurvey";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormSurvey";
             this.Load += new System.EventHandler(this.FormSurvey_Load);
