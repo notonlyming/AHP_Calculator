@@ -252,6 +252,72 @@ namespace AHP_Calculator
                 formSurvey.Show();
             }
         }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (LayerList.Count > 0)
+            {
+                //如果有扫描好的层次结构，则开始存储
+                ArrayList NodesList = new ArrayList();  //新建list用于生成一维的node列表
+                //生成一维列表
+                foreach (TreeNodeCollection nodes in LayerList)
+                {
+                    foreach (TreeNode node in nodes)
+                    {
+                        NodesList.Add(node);
+                    }
+                }
+                TreeNode[] CurrentAllTreeNodes = (TreeNode[])NodesList.ToArray(typeof(TreeNode));
+                NodeInfo[] nodeInfos = new NodeInfo[CurrentAllTreeNodes.Length];
+                //填充序号和文本
+                for (int i = 0; i < nodeInfos.Length; i++)
+                {
+                    nodeInfos[i].ID = i;
+                    nodeInfos[i].node = CurrentAllTreeNodes[i];
+                    nodeInfos[i].Text = CurrentAllTreeNodes[i].Text;
+                }
+                //根据文本查找父节点ID
+                for (int i = 0; i < nodeInfos.Length; i++)
+                {
+                    if (nodeInfos[i].node.Parent != null)
+                    {
+                        foreach (var node in nodeInfos)
+                        {
+                            if (nodeInfos[i].node.Parent.Text.Equals(node.Text))
+                            {
+                                //如果文本相同，找到了
+                                nodeInfos[i].ParentID = node.ID;
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        //如果没有父节点了，ID就是自己的ID
+                        nodeInfos[i].ParentID = nodeInfos[i].ID;
+                    }
+
+                }
+
+                //构建保存字符串
+                StringBuilder saveStringBuilder = new StringBuilder();
+                foreach (var node in nodeInfos)
+                {
+                    saveStringBuilder.Append(node.ID.ToString() + "," + node.ParentID.ToString() + "," + node.Text + "\n");
+                }
+
+                MessageBox.Show(saveStringBuilder.ToString());
+            }
+        }
+
+
+        struct NodeInfo
+        {
+            public int ID;
+            public int ParentID;
+            public TreeNode node;
+            public string Text;
+        }
     }
 
 }
