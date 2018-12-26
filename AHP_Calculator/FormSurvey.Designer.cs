@@ -34,6 +34,8 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -48,9 +50,11 @@
             this.ClientSize = new System.Drawing.Size(683, 493);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "FormSurvey";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormSurvey";
             this.Load += new System.EventHandler(this.FormSurvey_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

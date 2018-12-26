@@ -21,13 +21,13 @@ namespace AHP_Calculator
         private ComboBox[] ComboBoxReverseOrNot;
         private ComboBox[] ComboBoxImportantTimes;
 
-        public FormSurvey(string[] factors, string parentFactor, string[,] priviousMatrix = null)
+        public FormSurvey(string[] factors, string parentFactor, string[,] priviousMatrix)
         {
             InitializeComponent();
             this.factors = factors;
             this.parentFactor = parentFactor;
             labelQuestions = new Label[factors.Length * (factors.Length - 1) / 2];
-            pairWiseMatrix = new string[factors.Length, factors.Length];
+            pairWiseMatrix = priviousMatrix;
             //generate answer control
             ComboBoxReverseOrNot = new ComboBox[labelQuestions.Length];
             ComboBoxImportantTimes = new ComboBox[labelQuestions.Length];
@@ -54,33 +54,6 @@ namespace AHP_Calculator
                 }
             }
 
-            //init matrix
-            if (priviousMatrix != null)
-            {
-                for (int i = 0; i < factors.Length; i++)
-                {
-                    for (int j = 0; j < factors.Length; j++)
-                    {
-                        pairWiseMatrix[i, j] = priviousMatrix[i, j];
-                    }
-                }
-            }
-            else
-            {
-                for (int i = 0; i < factors.Length; i++)
-                {
-                    for (int j = 0; j < factors.Length; j++)
-                    {
-                        pairWiseMatrix[i, j] = "0";
-                    }
-                }
-            }
-
-            //对角线初始化为1
-            for (int i = 0; i < pairWiseMatrix.GetLength(0); i++)
-            {
-                pairWiseMatrix[i, i] = "1";
-            }
         }
 
         private void FormSurvey_Load(object sender, EventArgs e)
@@ -91,8 +64,8 @@ namespace AHP_Calculator
                 //add question
                 labelQuestions[i] = new Label
                 {
-                    Text = "Consider two factors: " + factors[positionInPairMatrix[0]] + " and " + factors[positionInPairMatrix[1]] +
-                    ", which one is more important in " + parentFactor + "? How many times more important?",
+                    Text = "考虑 " + factors[positionInPairMatrix[0]] + " 和 " + factors[positionInPairMatrix[1]] +
+                    "在" + parentFactor + "方面那个更重要。 重要多少倍？",
                     AutoSize = true,
                     Font = defaultFont
                 };

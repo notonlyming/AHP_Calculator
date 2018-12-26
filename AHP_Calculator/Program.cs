@@ -19,4 +19,10 @@ namespace AHP_Calculator
             Application.Run(new FormAHP());
         }
     }
+
+
+    public class HierarchyInfo
+    {
+
+    }
 }
