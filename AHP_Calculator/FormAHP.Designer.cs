@@ -90,6 +90,7 @@
             this.buttonScan = new System.Windows.Forms.Button();
             this.buttonPairWise = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.buttonCheck = new System.Windows.Forms.Button();
             this.groupBoxHierarchy.SuspendLayout();
             this.groupBoxMatrix.SuspendLayout();
             this.SuspendLayout();
@@ -227,6 +228,7 @@
             // 
             // groupBoxMatrix
             // 
+            this.groupBoxMatrix.Controls.Add(this.buttonCheck);
             this.groupBoxMatrix.Controls.Add(this.buttonScan);
             this.groupBoxMatrix.Controls.Add(this.buttonPairWise);
             this.groupBoxMatrix.Controls.Add(this.listBox1);
@@ -270,12 +272,22 @@
             this.listBox1.Size = new System.Drawing.Size(254, 361);
             this.listBox1.TabIndex = 0;
             // 
+            // buttonCheck
+            // 
+            this.buttonCheck.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonCheck.Location = new System.Drawing.Point(27, 393);
+            this.buttonCheck.Name = "buttonCheck";
+            this.buttonCheck.Size = new System.Drawing.Size(68, 32);
+            this.buttonCheck.TabIndex = 13;
+            this.buttonCheck.Text = "Check";
+            this.buttonCheck.UseVisualStyleBackColor = true;
+            // 
             // FormAHP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(739, 494);
+            this.ClientSize = new System.Drawing.Size(599, 494);
             this.Controls.Add(this.groupBoxMatrix);
             this.Controls.Add(this.groupBoxHierarchy);
             this.Name = "FormAHP";
@@ -301,6 +313,7 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button buttonPairWise;
         private System.Windows.Forms.Button buttonScan;
+        private System.Windows.Forms.Button buttonCheck;
     }
 }
 

@@ -53,9 +53,10 @@ namespace AHP_Calculator
 
         private void buttonClearNode_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Want to clear?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            if (MessageBox.Show("Want to clear? This will reset this project!!!", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
             {
                 treeViewHierarchy.Nodes.Clear();
+                buttonScan_Click(new object(),new EventArgs());
             }
         }
 
@@ -118,6 +119,15 @@ namespace AHP_Calculator
 
         private void buttonScan_Click(object sender, EventArgs e)
         {
+            if (treeViewHierarchy.Nodes.Count == 0)
+            {
+                //如果层次还没建立，重新扫描导致各种清空
+                LayerList.Clear();
+                listBox1.Items.Clear();
+                MatrixList.Clear();
+                return;
+            }
+
             if (MessageBox.Show("This operation will clear all privious pair-wise matrix, continue?",
                 "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2, 0)
                 == DialogResult.Yes)
