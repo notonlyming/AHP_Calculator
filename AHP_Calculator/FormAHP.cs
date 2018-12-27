@@ -72,7 +72,7 @@ namespace AHP_Calculator
                     if (parentNode == null)
                     {
                         //如果为空，说明是顶层，没了爸爸，好惨
-                        listBoxMatrix.Items.Add("Top, no matrix");
+                        //listBoxMatrix.Items.Add("Top, no matrix");
                     }
                     else
                     {
@@ -201,8 +201,8 @@ namespace AHP_Calculator
         {
             if (listBoxMatrix.SelectedIndex != -1)
             {
-                TreeNodeCollection CurrentLayer = ((TreeNodeCollection[])LayerList.ToArray(typeof(TreeNodeCollection)))[listBoxMatrix.SelectedIndex];
-                string[,] CurrentMatrix = ((string[][,])MatrixList.ToArray(typeof(string[,])))[listBoxMatrix.SelectedIndex];
+                TreeNodeCollection CurrentLayer = ((TreeNodeCollection[])LayerList.ToArray(typeof(TreeNodeCollection)))[listBoxMatrix.SelectedIndex + 1];
+                string[,] CurrentMatrix = ((string[][,])MatrixList.ToArray(typeof(string[,])))[listBoxMatrix.SelectedIndex + 1];
 
                 if (CurrentMatrix == null)
                 {
@@ -291,17 +291,17 @@ namespace AHP_Calculator
                 {
                     if (matrix != null)
                     {
-                    //记录ID和维数
-                    saveStringBuilder.Append("-" + MatrixIndex.ToString() + "," + matrix.Rank.ToString());
-                    for (int i = 0; i < matrix.GetLength(0); i++)
-                    {
-                        for (int j = 0; j < matrix.GetLength(0); j++)
+                        //记录ID和维数
+                        saveStringBuilder.Append("-" + MatrixIndex.ToString() + "," + matrix.GetLength(0).ToString());
+                        for (int i = 0; i < matrix.GetLength(0); i++)
                         {
-                            saveStringBuilder.Append("," + matrix[i, j]);
+                            for (int j = 0; j < matrix.GetLength(0); j++)
+                            {
+                                saveStringBuilder.Append("," + matrix[i, j]);
+                            }
                         }
                         saveStringBuilder.Append("\n");
-                    }
-                    MatrixIndex++;
+                        MatrixIndex++;
                     }
                 }
 
@@ -316,7 +316,7 @@ namespace AHP_Calculator
             }
             else
             {
-                MessageBox.Show("Layers were not scaned!","Warnning",MessageBoxButtons.OK,MessageBoxIcon.Error,MessageBoxDefaultButton.Button1);
+                MessageBox.Show("Layers were not scaned!", "Warnning", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
         }
 
@@ -327,8 +327,8 @@ namespace AHP_Calculator
             {
                 //取出被选层矩阵因素，构造因素字符串数组
                 //下面这一行表示从选择的列表框中取出选中的行号索引，到对应的层去找那个孩子集合，取孩子个数，即因素个数，构造相同大小的因素字符串数组
-                TreeNodeCollection CurrentLayer = ((TreeNodeCollection[])LayerList.ToArray(typeof(TreeNodeCollection)))[listBoxMatrix.SelectedIndex];
-                string[,] CurrentMatrix = ((string[][,])MatrixList.ToArray(typeof(string[,])))[listBoxMatrix.SelectedIndex];
+                TreeNodeCollection CurrentLayer = ((TreeNodeCollection[])LayerList.ToArray(typeof(TreeNodeCollection)))[listBoxMatrix.SelectedIndex + 1];
+                string[,] CurrentMatrix = ((string[][,])MatrixList.ToArray(typeof(string[,])))[listBoxMatrix.SelectedIndex + 1];
 
                 if (CurrentMatrix == null)
                 {
@@ -408,6 +408,11 @@ namespace AHP_Calculator
                     this.Location.Y + groupBoxMatrix.Location.Y
                     + listBoxMatrix.Location.Y + e.Location.Y + 35));
             }
+        }
+
+        private void quitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
