@@ -172,7 +172,7 @@ namespace AHP_Calculator
             }
             else
             {
-                MessageBox.Show("");
+                MessageBox.Show("Just one root!");
             }
         }
 
@@ -190,7 +190,16 @@ namespace AHP_Calculator
         {
             if (treeViewHierarchy.SelectedNode != null)
             {
-                treeViewHierarchy.SelectedNode.Nodes.Add(Microsoft.VisualBasic.Interaction.InputBox("Please enter node text.", "Title needed"));
+                string addSubStr = Microsoft.VisualBasic.Interaction.InputBox("Please enter node text.", "Title needed");
+                if (findTreeNodeByText(addSubStr) == null)
+                {
+                    treeViewHierarchy.SelectedNode.Nodes.Add(addSubStr);
+                }
+                else
+                {
+                    MessageBox.Show("Same neme node exist!");
+                    treeViewHierarchy.SelectedNode = findTreeNodeByText(addSubStr);
+                }
             }
         }
 

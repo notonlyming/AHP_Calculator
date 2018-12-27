@@ -29,57 +29,57 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("基坑变形失稳");
-            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("基坑突涌");
-            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("基坑坍塌");
-            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("基坑问题", new System.Windows.Forms.TreeNode[] {
-            treeNode27,
-            treeNode28,
-            treeNode29});
-            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("维修风险");
-            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("超过使用年限");
-            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("保养不到位");
-            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("盾构", new System.Windows.Forms.TreeNode[] {
-            treeNode31,
-            treeNode32,
-            treeNode33});
-            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("防水层失效");
-            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("支撑体系不稳定");
-            System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("地面底层裂缝");
-            System.Windows.Forms.TreeNode treeNode38 = new System.Windows.Forms.TreeNode("荷载堆积");
-            System.Windows.Forms.TreeNode treeNode39 = new System.Windows.Forms.TreeNode("注浆土体位移");
-            System.Windows.Forms.TreeNode treeNode40 = new System.Windows.Forms.TreeNode("周围地表变形过大");
-            System.Windows.Forms.TreeNode treeNode41 = new System.Windows.Forms.TreeNode("技术", new System.Windows.Forms.TreeNode[] {
-            treeNode30,
-            treeNode34,
-            treeNode35,
-            treeNode36,
-            treeNode37,
-            treeNode38,
-            treeNode39,
-            treeNode40});
-            System.Windows.Forms.TreeNode treeNode42 = new System.Windows.Forms.TreeNode("自然灾害");
-            System.Windows.Forms.TreeNode treeNode43 = new System.Windows.Forms.TreeNode("土质");
-            System.Windows.Forms.TreeNode treeNode44 = new System.Windows.Forms.TreeNode("地下空洞");
-            System.Windows.Forms.TreeNode treeNode45 = new System.Windows.Forms.TreeNode("水文条件");
-            System.Windows.Forms.TreeNode treeNode46 = new System.Windows.Forms.TreeNode("断裂构造面");
-            System.Windows.Forms.TreeNode treeNode47 = new System.Windows.Forms.TreeNode("地质", new System.Windows.Forms.TreeNode[] {
-            treeNode43,
-            treeNode44,
-            treeNode45,
-            treeNode46});
-            System.Windows.Forms.TreeNode treeNode48 = new System.Windows.Forms.TreeNode("周边建筑物");
-            System.Windows.Forms.TreeNode treeNode49 = new System.Windows.Forms.TreeNode("地下管线设施");
-            System.Windows.Forms.TreeNode treeNode50 = new System.Windows.Forms.TreeNode("周边设施", new System.Windows.Forms.TreeNode[] {
-            treeNode48,
-            treeNode49});
-            System.Windows.Forms.TreeNode treeNode51 = new System.Windows.Forms.TreeNode("环境", new System.Windows.Forms.TreeNode[] {
-            treeNode42,
-            treeNode47,
-            treeNode50});
-            System.Windows.Forms.TreeNode treeNode52 = new System.Windows.Forms.TreeNode("风险", new System.Windows.Forms.TreeNode[] {
-            treeNode41,
-            treeNode51});
+            System.Windows.Forms.TreeNode treeNode53 = new System.Windows.Forms.TreeNode("基坑变形失稳");
+            System.Windows.Forms.TreeNode treeNode54 = new System.Windows.Forms.TreeNode("基坑突涌");
+            System.Windows.Forms.TreeNode treeNode55 = new System.Windows.Forms.TreeNode("基坑坍塌");
+            System.Windows.Forms.TreeNode treeNode56 = new System.Windows.Forms.TreeNode("基坑问题", new System.Windows.Forms.TreeNode[] {
+            treeNode53,
+            treeNode54,
+            treeNode55});
+            System.Windows.Forms.TreeNode treeNode57 = new System.Windows.Forms.TreeNode("维修风险");
+            System.Windows.Forms.TreeNode treeNode58 = new System.Windows.Forms.TreeNode("超过使用年限");
+            System.Windows.Forms.TreeNode treeNode59 = new System.Windows.Forms.TreeNode("保养不到位");
+            System.Windows.Forms.TreeNode treeNode60 = new System.Windows.Forms.TreeNode("盾构", new System.Windows.Forms.TreeNode[] {
+            treeNode57,
+            treeNode58,
+            treeNode59});
+            System.Windows.Forms.TreeNode treeNode61 = new System.Windows.Forms.TreeNode("防水层失效");
+            System.Windows.Forms.TreeNode treeNode62 = new System.Windows.Forms.TreeNode("支撑体系不稳定");
+            System.Windows.Forms.TreeNode treeNode63 = new System.Windows.Forms.TreeNode("地面底层裂缝");
+            System.Windows.Forms.TreeNode treeNode64 = new System.Windows.Forms.TreeNode("荷载堆积");
+            System.Windows.Forms.TreeNode treeNode65 = new System.Windows.Forms.TreeNode("注浆土体位移");
+            System.Windows.Forms.TreeNode treeNode66 = new System.Windows.Forms.TreeNode("周围地表变形过大");
+            System.Windows.Forms.TreeNode treeNode67 = new System.Windows.Forms.TreeNode("技术", new System.Windows.Forms.TreeNode[] {
+            treeNode56,
+            treeNode60,
+            treeNode61,
+            treeNode62,
+            treeNode63,
+            treeNode64,
+            treeNode65,
+            treeNode66});
+            System.Windows.Forms.TreeNode treeNode68 = new System.Windows.Forms.TreeNode("自然灾害");
+            System.Windows.Forms.TreeNode treeNode69 = new System.Windows.Forms.TreeNode("土质");
+            System.Windows.Forms.TreeNode treeNode70 = new System.Windows.Forms.TreeNode("地下空洞");
+            System.Windows.Forms.TreeNode treeNode71 = new System.Windows.Forms.TreeNode("水文条件");
+            System.Windows.Forms.TreeNode treeNode72 = new System.Windows.Forms.TreeNode("断裂构造面");
+            System.Windows.Forms.TreeNode treeNode73 = new System.Windows.Forms.TreeNode("地质", new System.Windows.Forms.TreeNode[] {
+            treeNode69,
+            treeNode70,
+            treeNode71,
+            treeNode72});
+            System.Windows.Forms.TreeNode treeNode74 = new System.Windows.Forms.TreeNode("周边建筑物");
+            System.Windows.Forms.TreeNode treeNode75 = new System.Windows.Forms.TreeNode("地下管线设施");
+            System.Windows.Forms.TreeNode treeNode76 = new System.Windows.Forms.TreeNode("周边设施", new System.Windows.Forms.TreeNode[] {
+            treeNode74,
+            treeNode75});
+            System.Windows.Forms.TreeNode treeNode77 = new System.Windows.Forms.TreeNode("环境", new System.Windows.Forms.TreeNode[] {
+            treeNode68,
+            treeNode73,
+            treeNode76});
+            System.Windows.Forms.TreeNode treeNode78 = new System.Windows.Forms.TreeNode("风险", new System.Windows.Forms.TreeNode[] {
+            treeNode67,
+            treeNode77});
             this.groupBoxHierarchy = new System.Windows.Forms.GroupBox();
             this.treeViewHierarchy = new System.Windows.Forms.TreeView();
             this.groupBoxMatrix = new System.Windows.Forms.GroupBox();
@@ -133,60 +133,60 @@
             this.treeViewHierarchy.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.treeViewHierarchy.Location = new System.Drawing.Point(9, 19);
             this.treeViewHierarchy.Name = "treeViewHierarchy";
-            treeNode27.Name = "节点5";
-            treeNode27.Text = "基坑变形失稳";
-            treeNode28.Name = "节点6";
-            treeNode28.Text = "基坑突涌";
-            treeNode29.Name = "节点12";
-            treeNode29.Text = "基坑坍塌";
-            treeNode30.Name = "节点3";
-            treeNode30.Text = "基坑问题";
-            treeNode31.Name = "节点7";
-            treeNode31.Text = "维修风险";
-            treeNode32.Name = "节点8";
-            treeNode32.Text = "超过使用年限";
-            treeNode33.Name = "节点18";
-            treeNode33.Text = "保养不到位";
-            treeNode34.Name = "节点4";
-            treeNode34.Text = "盾构";
-            treeNode35.Name = "节点13";
-            treeNode35.Text = "防水层失效";
-            treeNode36.Name = "节点14";
-            treeNode36.Text = "支撑体系不稳定";
-            treeNode37.Name = "节点15";
-            treeNode37.Text = "地面底层裂缝";
-            treeNode38.Name = "节点16";
-            treeNode38.Text = "荷载堆积";
-            treeNode39.Name = "节点17";
-            treeNode39.Text = "注浆土体位移";
-            treeNode40.Name = "节点19";
-            treeNode40.Text = "周围地表变形过大";
-            treeNode41.Name = "节点1";
-            treeNode41.Text = "技术";
-            treeNode42.Name = "节点9";
-            treeNode42.Text = "自然灾害";
-            treeNode43.Name = "节点20";
-            treeNode43.Text = "土质";
-            treeNode44.Name = "节点21";
-            treeNode44.Text = "地下空洞";
-            treeNode45.Name = "节点22";
-            treeNode45.Text = "水文条件";
-            treeNode46.Name = "节点23";
-            treeNode46.Text = "断裂构造面";
-            treeNode47.Name = "节点10";
-            treeNode47.Text = "地质";
-            treeNode48.Name = "节点24";
-            treeNode48.Text = "周边建筑物";
-            treeNode49.Name = "节点25";
-            treeNode49.Text = "地下管线设施";
-            treeNode50.Name = "节点11";
-            treeNode50.Text = "周边设施";
-            treeNode51.Name = "节点2";
-            treeNode51.Text = "环境";
-            treeNode52.Name = "节点0";
-            treeNode52.Text = "风险";
+            treeNode53.Name = "节点5";
+            treeNode53.Text = "基坑变形失稳";
+            treeNode54.Name = "节点6";
+            treeNode54.Text = "基坑突涌";
+            treeNode55.Name = "节点12";
+            treeNode55.Text = "基坑坍塌";
+            treeNode56.Name = "节点3";
+            treeNode56.Text = "基坑问题";
+            treeNode57.Name = "节点7";
+            treeNode57.Text = "维修风险";
+            treeNode58.Name = "节点8";
+            treeNode58.Text = "超过使用年限";
+            treeNode59.Name = "节点18";
+            treeNode59.Text = "保养不到位";
+            treeNode60.Name = "节点4";
+            treeNode60.Text = "盾构";
+            treeNode61.Name = "节点13";
+            treeNode61.Text = "防水层失效";
+            treeNode62.Name = "节点14";
+            treeNode62.Text = "支撑体系不稳定";
+            treeNode63.Name = "节点15";
+            treeNode63.Text = "地面底层裂缝";
+            treeNode64.Name = "节点16";
+            treeNode64.Text = "荷载堆积";
+            treeNode65.Name = "节点17";
+            treeNode65.Text = "注浆土体位移";
+            treeNode66.Name = "节点19";
+            treeNode66.Text = "周围地表变形过大";
+            treeNode67.Name = "节点1";
+            treeNode67.Text = "技术";
+            treeNode68.Name = "节点9";
+            treeNode68.Text = "自然灾害";
+            treeNode69.Name = "节点20";
+            treeNode69.Text = "土质";
+            treeNode70.Name = "节点21";
+            treeNode70.Text = "地下空洞";
+            treeNode71.Name = "节点22";
+            treeNode71.Text = "水文条件";
+            treeNode72.Name = "节点23";
+            treeNode72.Text = "断裂构造面";
+            treeNode73.Name = "节点10";
+            treeNode73.Text = "地质";
+            treeNode74.Name = "节点24";
+            treeNode74.Text = "周边建筑物";
+            treeNode75.Name = "节点25";
+            treeNode75.Text = "地下管线设施";
+            treeNode76.Name = "节点11";
+            treeNode76.Text = "周边设施";
+            treeNode77.Name = "节点2";
+            treeNode77.Text = "环境";
+            treeNode78.Name = "节点0";
+            treeNode78.Text = "风险";
             this.treeViewHierarchy.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode52});
+            treeNode78});
             this.treeViewHierarchy.Size = new System.Drawing.Size(278, 425);
             this.treeViewHierarchy.TabIndex = 6;
             // 
@@ -271,10 +271,10 @@
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.rootToolStripMenuItem,
-            this.subToolStripMenuItem});
+            this.subToolStripMenuItem,
+            this.rootToolStripMenuItem});
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addToolStripMenuItem.Text = "Add";
             // 
             // rootToolStripMenuItem
