@@ -38,7 +38,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(347, 255);
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "FormMatrix";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
