@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace AHP_Calculator
 {
@@ -21,8 +22,20 @@ namespace AHP_Calculator
     }
 
 
-    public class HierarchyInfo
+    public class MatrixOperater
     {
+        public double[,] conventStringMatrixIntoNumberArray()
+        {
+            return null;
+        }
+
+        public ArrayList CheckMatrix()
+        {
+            //OK?CI?CR?
+
+            return null;
+        }
+
 
     }
 }
