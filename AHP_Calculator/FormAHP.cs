@@ -414,5 +414,60 @@ namespace AHP_Calculator
         {
             this.Close();
         }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string CSVFileStr;
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                System.IO.StreamReader file = System.IO.File.OpenText(openFileDialog1.FileName);
+                CSVFileStr = file.ReadToEnd();
+                file.Close();
+
+                //读入成功，先清除当前会话
+                treeViewHierarchy.Nodes.Clear();
+                ScanLevel();
+                //分隔每行
+                string[] lines = CSVFileStr.Split('\n');
+                //建立节点数组
+                ArrayList nodesInfo = new ArrayList();
+                NodeInfo nodeInfotmp;
+                string[] lineInfo;  //每行信息
+                foreach (string line in lines)
+                {
+                    //读入每行
+                    lineInfo = line.Split(',');
+                    if (lineInfo[0].Equals(""))
+                    {
+                        //跳过空行
+                        continue;
+                    }
+                    if (int.Parse(lineInfo[0]) >= 0)
+                    {
+                        //如果是节点行，将节点加入列表
+                        nodeInfotmp = new NodeInfo();
+                        nodeInfotmp.ID = int.Parse(lineInfo[0]);
+                        nodeInfotmp.ParentID = int.Parse(lineInfo[1]);
+                        nodeInfotmp.Text = lineInfo[2];
+                        nodesInfo.Add(nodeInfotmp);
+                    }
+                    else
+                    {
+                        //如果是矩阵行
+                        //新建矩阵
+                        string[,] currentMat = new string[int.Parse(lineInfo[1]), int.Parse(lineInfo[1])];
+                        for (int i = 2; i < lineInfo.Length; i++)
+                        {
+                            //从第三个读到末尾
+                            currentMat[(i - 2) % currentMat.GetLength(0),
+                                (i - 2) / currentMat.GetLength(0)] = lineInfo[i];
+                        }
+                        MatrixList.Add(currentMat);
+                    }
+                }
+                //开始重建层次结构
+
+            }
+        }
     }
 }
