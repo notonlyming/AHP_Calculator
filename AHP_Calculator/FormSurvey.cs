@@ -129,5 +129,16 @@ namespace AHP_Calculator
                 }
             }
         }
+
+        public string getAllQuestionText()
+        {
+            //取出所有标签文本合成并返回
+            StringBuilder stringBuilder = new StringBuilder();
+            foreach (var questionLabel in labelQuestions)
+            {
+                stringBuilder.Append(questionLabel.Text + "\r\n\r\n");
+            }
+            return stringBuilder.ToString();
+        }
     }
 }

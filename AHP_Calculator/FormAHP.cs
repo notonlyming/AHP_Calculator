@@ -224,33 +224,12 @@ namespace AHP_Calculator
             }
         }
 
-        private void pairWiseToolStripMenuItem_Click(object sender, EventArgs e)
+        struct NodeInfo
         {
-
-            if (listBox1.SelectedIndex != -1)
-            {
-                //取出被选层矩阵因素，构造因素字符串数组
-                //下面这一行表示从选择的列表框中取出选中的行号索引，到对应的层去找那个孩子集合，取孩子个数，即因素个数，构造相同大小的因素字符串数组
-                TreeNodeCollection CurrentLayer = ((TreeNodeCollection[])LayerList.ToArray(typeof(TreeNodeCollection)))[listBox1.SelectedIndex];
-                string[,] CurrentMatrix = ((string[][,])MatrixList.ToArray(typeof(string[,])))[listBox1.SelectedIndex];
-
-                if (CurrentMatrix == null)
-                {
-                    MessageBox.Show("No matrix!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, 0);
-                    return;  //如果矩阵为空，不进行下面的操作
-                }
-
-                string[] FactorsString = new string[CurrentLayer.Count];
-                int i = 0;
-                //取出该层因素
-                foreach (TreeNode node in CurrentLayer)
-                {
-                    FactorsString[i] = node.Text;
-                    i++;
-                }
-                FormSurvey formSurvey = new FormSurvey(FactorsString, CurrentLayer[0].Parent.Text, CurrentMatrix);
-                formSurvey.Show();
-            }
+            public int ID;
+            public int ParentID;
+            public TreeNode node;
+            public string Text;
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -311,14 +290,62 @@ namespace AHP_Calculator
         }
 
 
-        struct NodeInfo
+        private void pairWiseToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            public int ID;
-            public int ParentID;
-            public TreeNode node;
-            public string Text;
+            if (listBox1.SelectedIndex != -1)
+            {
+                //取出被选层矩阵因素，构造因素字符串数组
+                //下面这一行表示从选择的列表框中取出选中的行号索引，到对应的层去找那个孩子集合，取孩子个数，即因素个数，构造相同大小的因素字符串数组
+                TreeNodeCollection CurrentLayer = ((TreeNodeCollection[])LayerList.ToArray(typeof(TreeNodeCollection)))[listBox1.SelectedIndex];
+                string[,] CurrentMatrix = ((string[][,])MatrixList.ToArray(typeof(string[,])))[listBox1.SelectedIndex];
+
+                if (CurrentMatrix == null)
+                {
+                    MessageBox.Show("No matrix!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, 0);
+                    return;  //如果矩阵为空，不进行下面的操作
+                }
+
+                string[] FactorsString = new string[CurrentLayer.Count];
+                int i = 0;
+                //取出该层因素
+                foreach (TreeNode node in CurrentLayer)
+                {
+                    FactorsString[i] = node.Text;
+                    i++;
+                }
+                FormSurvey formSurvey = new FormSurvey(FactorsString, CurrentLayer[0].Parent.Text, CurrentMatrix);
+                formSurvey.Show();
+            }
+        }
+
+        private void exportTextToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            //取每个矩阵出来进行导出
+            for (int index = 0; index < listBox1.Items.Count; index++)
+            {
+                //取出当前矩阵和层次
+                TreeNodeCollection CurrentLayer = ((TreeNodeCollection[])LayerList.ToArray(typeof(TreeNodeCollection)))[index];
+                string[,] CurrentMatrix = ((string[][,])MatrixList.ToArray(typeof(string[,])))[index];
+                if (CurrentMatrix != null)
+                {
+                    string[] FactorsString = new string[CurrentLayer.Count];
+                    int i = 0;
+                    //取出该层因素
+                    foreach (TreeNode node in CurrentLayer)
+                    {
+                        FactorsString[i] = node.Text;
+                        i++;
+                    }
+                    FormSurvey formSurvey = new FormSurvey(FactorsString, CurrentLayer[0].Parent.Text, CurrentMatrix);
+                    formSurvey.Show();
+                    stringBuilder.Append("------------------------------ \r\n");
+                    stringBuilder.Append(formSurvey.getAllQuestionText());
+                    formSurvey.Close();
+                }
+            }
+            FormText formText = new FormText();
+            formText.Show(stringBuilder.ToString());
         }
     }
-
 }
-
