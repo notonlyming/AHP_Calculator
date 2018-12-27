@@ -83,8 +83,8 @@
             this.groupBoxHierarchy = new System.Windows.Forms.GroupBox();
             this.treeViewHierarchy = new System.Windows.Forms.TreeView();
             this.groupBoxMatrix = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.listBoxMatrix = new System.Windows.Forms.ListBox();
+            this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -104,14 +104,15 @@
             this.exportTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStripForMatrixList = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.pairWiseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.scanToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.checkToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.groupBoxHierarchy.SuspendLayout();
             this.groupBoxMatrix.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
+            this.menuStripMain.SuspendLayout();
+            this.contextMenuStripForMatrixList.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxHierarchy
@@ -188,7 +189,7 @@
             // 
             // groupBoxMatrix
             // 
-            this.groupBoxMatrix.Controls.Add(this.listBox1);
+            this.groupBoxMatrix.Controls.Add(this.listBoxMatrix);
             this.groupBoxMatrix.Location = new System.Drawing.Point(312, 30);
             this.groupBoxMatrix.Name = "groupBoxMatrix";
             this.groupBoxMatrix.Size = new System.Drawing.Size(273, 453);
@@ -196,31 +197,31 @@
             this.groupBoxMatrix.TabStop = false;
             this.groupBoxMatrix.Text = "Matrix";
             // 
-            // listBox1
+            // listBoxMatrix
             // 
-            this.listBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 21;
-            this.listBox1.Location = new System.Drawing.Point(11, 20);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(254, 424);
-            this.listBox1.TabIndex = 0;
-            this.listBox1.DoubleClick += new System.EventHandler(this.listBox1_DoubleClick);
-            this.listBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseDown);
+            this.listBoxMatrix.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.listBoxMatrix.FormattingEnabled = true;
+            this.listBoxMatrix.ItemHeight = 21;
+            this.listBoxMatrix.Location = new System.Drawing.Point(11, 20);
+            this.listBoxMatrix.Name = "listBoxMatrix";
+            this.listBoxMatrix.Size = new System.Drawing.Size(254, 424);
+            this.listBoxMatrix.TabIndex = 0;
+            this.listBoxMatrix.DoubleClick += new System.EventHandler(this.listBoxMatrix_DoubleClick);
+            this.listBoxMatrix.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listBoxMatrix_MouseDown);
             // 
-            // menuStrip1
+            // menuStripMain
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.hireToolStripMenuItem,
             this.matrixToolStripMenuItem,
             this.surveyToolStripMenuItem,
             this.helpToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(599, 25);
-            this.menuStrip1.TabIndex = 9;
-            this.menuStrip1.Text = "menuStrip1";
+            this.menuStripMain.Location = new System.Drawing.Point(0, 0);
+            this.menuStripMain.Name = "menuStripMain";
+            this.menuStripMain.Size = new System.Drawing.Size(599, 25);
+            this.menuStripMain.TabIndex = 9;
+            this.menuStripMain.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
@@ -341,14 +342,14 @@
             // pairWiseToolStripMenuItem1
             // 
             this.pairWiseToolStripMenuItem1.Name = "pairWiseToolStripMenuItem1";
-            this.pairWiseToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.pairWiseToolStripMenuItem1.Size = new System.Drawing.Size(139, 22);
             this.pairWiseToolStripMenuItem1.Text = "Pair wise";
             this.pairWiseToolStripMenuItem1.Click += new System.EventHandler(this.pairWiseToolStripMenuItem1_Click);
             // 
             // exportTextToolStripMenuItem
             // 
             this.exportTextToolStripMenuItem.Name = "exportTextToolStripMenuItem";
-            this.exportTextToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exportTextToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.exportTextToolStripMenuItem.Text = "Export text";
             this.exportTextToolStripMenuItem.Click += new System.EventHandler(this.exportTextToolStripMenuItem_Click);
             // 
@@ -366,14 +367,14 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
             this.aboutToolStripMenuItem.Text = "About";
             // 
-            // contextMenuStrip1
+            // contextMenuStripForMatrixList
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.contextMenuStripForMatrixList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pairWiseToolStripMenuItem,
             this.scanToolStripMenuItem1,
             this.checkToolStripMenuItem1});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(128, 70);
+            this.contextMenuStripForMatrixList.Name = "contextMenuStrip1";
+            this.contextMenuStripForMatrixList.Size = new System.Drawing.Size(128, 70);
             // 
             // pairWiseToolStripMenuItem
             // 
@@ -396,6 +397,11 @@
             this.checkToolStripMenuItem1.Text = "Check";
             this.checkToolStripMenuItem1.Click += new System.EventHandler(this.checkToolStripMenuItem1_Click);
             // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.DefaultExt = "csv";
+            this.saveFileDialog1.Filter = "csv 逗号分隔符文件|*.csv|所有文件|*.*";
+            // 
             // FormAHP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -404,8 +410,8 @@
             this.ClientSize = new System.Drawing.Size(599, 495);
             this.Controls.Add(this.groupBoxMatrix);
             this.Controls.Add(this.groupBoxHierarchy);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.Controls.Add(this.menuStripMain);
+            this.MainMenuStrip = this.menuStripMain;
             this.MaximizeBox = false;
             this.Name = "FormAHP";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -413,9 +419,9 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBoxHierarchy.ResumeLayout(false);
             this.groupBoxMatrix.ResumeLayout(false);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.contextMenuStrip1.ResumeLayout(false);
+            this.menuStripMain.ResumeLayout(false);
+            this.menuStripMain.PerformLayout();
+            this.contextMenuStripForMatrixList.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -425,8 +431,8 @@
         private System.Windows.Forms.GroupBox groupBoxHierarchy;
         private System.Windows.Forms.TreeView treeViewHierarchy;
         private System.Windows.Forms.GroupBox groupBoxMatrix;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ListBox listBoxMatrix;
+        private System.Windows.Forms.MenuStrip menuStripMain;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
@@ -443,13 +449,14 @@
         private System.Windows.Forms.ToolStripMenuItem checkToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripForMatrixList;
         private System.Windows.Forms.ToolStripMenuItem surveyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pairWiseToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem exportTextToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pairWiseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem scanToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem checkToolStripMenuItem1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 

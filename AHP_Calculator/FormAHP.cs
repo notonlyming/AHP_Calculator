@@ -38,7 +38,7 @@ namespace AHP_Calculator
             {
                 //如果层次还没建立，重新扫描导致各种清空
                 LayerList.Clear();
-                listBox1.Items.Clear();
+                listBoxMatrix.Items.Clear();
                 MatrixList.Clear();
                 return;
             }
@@ -65,19 +65,19 @@ namespace AHP_Calculator
                 }
 
                 //将获得的层次加入列表框
-                listBox1.Items.Clear();  //先清除之前的结果，在添加新扫描的结果
+                listBoxMatrix.Items.Clear();  //先清除之前的结果，在添加新扫描的结果
                 foreach (TreeNodeCollection layer in LayerList)
                 {
                     TreeNode parentNode = layer[0].Parent;
                     if (parentNode == null)
                     {
                         //如果为空，说明是顶层，没了爸爸，好惨
-                        listBox1.Items.Add("Top, no matrix");
+                        listBoxMatrix.Items.Add("Top, no matrix");
                     }
                     else
                     {
                         //加入列表
-                        listBox1.Items.Add("Pait-wise Matrix in " + parentNode.Text);
+                        listBoxMatrix.Items.Add("Pait-wise Matrix in " + parentNode.Text);
                     }
                 }
 
@@ -134,7 +134,7 @@ namespace AHP_Calculator
             return tmpMa;
         }
 
-        int GetTreeNodesDepth(TreeNodeCollection treeNode)
+        private int GetTreeNodesDepth(TreeNodeCollection treeNode)
         {
             //求该树的最大深度
             int max = 0;
@@ -199,10 +199,10 @@ namespace AHP_Calculator
 
         private void showToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (listBox1.SelectedIndex != -1)
+            if (listBoxMatrix.SelectedIndex != -1)
             {
-                TreeNodeCollection CurrentLayer = ((TreeNodeCollection[])LayerList.ToArray(typeof(TreeNodeCollection)))[listBox1.SelectedIndex];
-                string[,] CurrentMatrix = ((string[][,])MatrixList.ToArray(typeof(string[,])))[listBox1.SelectedIndex];
+                TreeNodeCollection CurrentLayer = ((TreeNodeCollection[])LayerList.ToArray(typeof(TreeNodeCollection)))[listBoxMatrix.SelectedIndex];
+                string[,] CurrentMatrix = ((string[][,])MatrixList.ToArray(typeof(string[,])))[listBoxMatrix.SelectedIndex];
 
                 if (CurrentMatrix == null)
                 {
@@ -285,19 +285,50 @@ namespace AHP_Calculator
                     saveStringBuilder.Append(node.ID.ToString() + "," + node.ParentID.ToString() + "," + node.Text + "\n");
                 }
 
-                MessageBox.Show(saveStringBuilder.ToString());
+                //构建矩阵字符串
+                int MatrixIndex = 1;
+                foreach (string[,] matrix in MatrixList)
+                {
+                    if (matrix != null)
+                    {
+                    //记录ID和维数
+                    saveStringBuilder.Append("-" + MatrixIndex.ToString() + "," + matrix.Rank.ToString());
+                    for (int i = 0; i < matrix.GetLength(0); i++)
+                    {
+                        for (int j = 0; j < matrix.GetLength(0); j++)
+                        {
+                            saveStringBuilder.Append("," + matrix[i, j]);
+                        }
+                        saveStringBuilder.Append("\n");
+                    }
+                    MatrixIndex++;
+                    }
+                }
+
+                //FormText formText = new FormText();
+                //formText.Show(saveStringBuilder.ToString());
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    System.IO.StreamWriter file = System.IO.File.CreateText(saveFileDialog1.FileName);
+                    file.Write(saveStringBuilder.ToString());
+                    file.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Layers were not scaned!","Warnning",MessageBoxButtons.OK,MessageBoxIcon.Error,MessageBoxDefaultButton.Button1);
             }
         }
 
 
         private void pairWiseToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (listBox1.SelectedIndex != -1)
+            if (listBoxMatrix.SelectedIndex != -1)
             {
                 //取出被选层矩阵因素，构造因素字符串数组
                 //下面这一行表示从选择的列表框中取出选中的行号索引，到对应的层去找那个孩子集合，取孩子个数，即因素个数，构造相同大小的因素字符串数组
-                TreeNodeCollection CurrentLayer = ((TreeNodeCollection[])LayerList.ToArray(typeof(TreeNodeCollection)))[listBox1.SelectedIndex];
-                string[,] CurrentMatrix = ((string[][,])MatrixList.ToArray(typeof(string[,])))[listBox1.SelectedIndex];
+                TreeNodeCollection CurrentLayer = ((TreeNodeCollection[])LayerList.ToArray(typeof(TreeNodeCollection)))[listBoxMatrix.SelectedIndex];
+                string[,] CurrentMatrix = ((string[][,])MatrixList.ToArray(typeof(string[,])))[listBoxMatrix.SelectedIndex];
 
                 if (CurrentMatrix == null)
                 {
@@ -322,7 +353,7 @@ namespace AHP_Calculator
         {
             StringBuilder stringBuilder = new StringBuilder();
             //取每个矩阵出来进行导出
-            for (int index = 0; index < listBox1.Items.Count; index++)
+            for (int index = 0; index < listBoxMatrix.Items.Count; index++)
             {
                 //取出当前矩阵和层次
                 TreeNodeCollection CurrentLayer = ((TreeNodeCollection[])LayerList.ToArray(typeof(TreeNodeCollection)))[index];
@@ -348,7 +379,7 @@ namespace AHP_Calculator
             formText.Show(stringBuilder.ToString());
         }
 
-        private void listBox1_DoubleClick(object sender, EventArgs e)
+        private void listBoxMatrix_DoubleClick(object sender, EventArgs e)
         {
             showToolStripMenuItem_Click(sender, e);
         }
@@ -368,14 +399,14 @@ namespace AHP_Calculator
 
         }
 
-        private void listBox1_MouseDown(object sender, MouseEventArgs e)
+        private void listBoxMatrix_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
             {
-                contextMenuStrip1.Show(new Point(this.Location.X + groupBoxMatrix.Location.X
-                    + listBox1.Location.X + e.Location.X+10,
+                contextMenuStripForMatrixList.Show(new Point(this.Location.X + groupBoxMatrix.Location.X
+                    + listBoxMatrix.Location.X + e.Location.X + 10,
                     this.Location.Y + groupBoxMatrix.Location.Y
-                    + listBox1.Location.Y + e.Location.Y+35));
+                    + listBoxMatrix.Location.Y + e.Location.Y + 35));
             }
         }
     }

@@ -31,7 +31,7 @@ namespace AHP_Calculator
 
         public void Show(string ShowText)
         {
-            base.Show();
+            Show();
             textBoxText.Text = ShowText;
         }
 
