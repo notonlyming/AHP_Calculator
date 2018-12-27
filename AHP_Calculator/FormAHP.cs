@@ -31,7 +31,7 @@ namespace AHP_Calculator
             }
         }
 
-        private void ScanLevel()
+        private void ScanLevel(bool clearPriviousMatrix)
         {
 
             if (treeViewHierarchy.Nodes.Count == 0)
@@ -82,21 +82,25 @@ namespace AHP_Calculator
                 }
 
                 //为每一层构造成对比较矩阵
-                MatrixList.Clear();  //每次重新生成前清除之前的结果
-                foreach (TreeNodeCollection layer in LayerList)
+                if (clearPriviousMatrix)
                 {
-                    TreeNode parentNode = layer[0].Parent;
-                    if (parentNode != null)
+                    MatrixList.Clear();  //每次重新生成前清除之前的结果
+                    foreach (TreeNodeCollection layer in LayerList)
                     {
-                        //如果不为空，加入列表
-                        MatrixList.Add(MakePairWiseMatrix(layer.Count));
-                    }
-                    else
-                    {
-                        //如果为空，还是加入，避免无法一一对应
-                        MatrixList.Add(null);
+                        TreeNode parentNode = layer[0].Parent;
+                        if (parentNode != null)
+                        {
+                            //如果不为空，加入列表
+                            MatrixList.Add(MakePairWiseMatrix(layer.Count));
+                        }
+                        else
+                        {
+                            //如果为空，还是加入，避免无法一一对应
+                            MatrixList.Add(null);
+                        }
                     }
                 }
+
             }
         }
 
@@ -162,7 +166,14 @@ namespace AHP_Calculator
 
         private void rootToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            treeViewHierarchy.Nodes.Add(Microsoft.VisualBasic.Interaction.InputBox("Please enter node text.", "Title needed"));
+            if (treeViewHierarchy.Nodes.Count < 1)
+            {
+                treeViewHierarchy.Nodes.Add(Microsoft.VisualBasic.Interaction.InputBox("Please enter node text.", "Title needed"));
+            }
+            else
+            {
+                MessageBox.Show("");
+            }
         }
 
         private void delToolStripMenuItem_Click(object sender, EventArgs e)
@@ -188,13 +199,13 @@ namespace AHP_Calculator
             if (MessageBox.Show("Want to clear? This will reset this project!!!", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
             {
                 treeViewHierarchy.Nodes.Clear();
-                ScanLevel();
+                ScanLevel(true);
             }
         }
 
         private void scanToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ScanLevel();
+            ScanLevel(true);
         }
 
         private void showToolStripMenuItem_Click(object sender, EventArgs e)
@@ -234,89 +245,49 @@ namespace AHP_Calculator
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (LayerList.Count > 0)
+            TreeNode[] CurrentAllTreeNodes = getTreeAllNodes(); //生成一维的node列表
+            NodeInfo[] nodeInfos = new NodeInfo[CurrentAllTreeNodes.Length];
+            //填充序号和文本
+            for (int i = 0; i < nodeInfos.Length; i++)
             {
-                //如果有扫描好的层次结构，则开始存储
-                ArrayList NodesList = new ArrayList();  //新建list用于生成一维的node列表
-                //生成一维列表
-                foreach (TreeNodeCollection nodes in LayerList)
+                nodeInfos[i].ID = i;
+                nodeInfos[i].node = CurrentAllTreeNodes[i];
+                nodeInfos[i].Text = CurrentAllTreeNodes[i].Text;
+            }
+            //根据文本查找父节点ID
+            for (int i = 0; i < nodeInfos.Length; i++)
+            {
+                if (nodeInfos[i].node.Parent != null)
                 {
-                    foreach (TreeNode node in nodes)
+                    foreach (var node in nodeInfos)
                     {
-                        NodesList.Add(node);
-                    }
-                }
-                TreeNode[] CurrentAllTreeNodes = (TreeNode[])NodesList.ToArray(typeof(TreeNode));
-                NodeInfo[] nodeInfos = new NodeInfo[CurrentAllTreeNodes.Length];
-                //填充序号和文本
-                for (int i = 0; i < nodeInfos.Length; i++)
-                {
-                    nodeInfos[i].ID = i;
-                    nodeInfos[i].node = CurrentAllTreeNodes[i];
-                    nodeInfos[i].Text = CurrentAllTreeNodes[i].Text;
-                }
-                //根据文本查找父节点ID
-                for (int i = 0; i < nodeInfos.Length; i++)
-                {
-                    if (nodeInfos[i].node.Parent != null)
-                    {
-                        foreach (var node in nodeInfos)
+                        if (nodeInfos[i].node.Parent.Text.Equals(node.Text))
                         {
-                            if (nodeInfos[i].node.Parent.Text.Equals(node.Text))
-                            {
-                                //如果文本相同，找到了
-                                nodeInfos[i].ParentID = node.ID;
-                                break;
-                            }
+                            //如果文本相同，找到了
+                            nodeInfos[i].ParentID = node.ID;
+                            break;
                         }
                     }
-                    else
-                    {
-                        //如果没有父节点了，ID就是自己的ID
-                        nodeInfos[i].ParentID = nodeInfos[i].ID;
-                    }
-
                 }
-
-                //构建保存字符串
-                StringBuilder saveStringBuilder = new StringBuilder();
-                foreach (var node in nodeInfos)
+                else
                 {
-                    saveStringBuilder.Append(node.ID.ToString() + "," + node.ParentID.ToString() + "," + node.Text + "\n");
-                }
-
-                //构建矩阵字符串
-                int MatrixIndex = 1;
-                foreach (string[,] matrix in MatrixList)
-                {
-                    if (matrix != null)
-                    {
-                        //记录ID和维数
-                        saveStringBuilder.Append("-" + MatrixIndex.ToString() + "," + matrix.GetLength(0).ToString());
-                        for (int i = 0; i < matrix.GetLength(0); i++)
-                        {
-                            for (int j = 0; j < matrix.GetLength(0); j++)
-                            {
-                                saveStringBuilder.Append("," + matrix[i, j]);
-                            }
-                        }
-                        saveStringBuilder.Append("\n");
-                        MatrixIndex++;
-                    }
-                }
-
-                //FormText formText = new FormText();
-                //formText.Show(saveStringBuilder.ToString());
-                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                {
-                    System.IO.StreamWriter file = System.IO.File.CreateText(saveFileDialog1.FileName);
-                    file.Write(saveStringBuilder.ToString());
-                    file.Close();
+                    //如果没有父节点了，ID就是自己的ID
+                    nodeInfos[i].ParentID = nodeInfos[i].ID;
                 }
             }
-            else
+
+            //构建保存字符串
+            StringBuilder saveStringBuilder = new StringBuilder();
+            foreach (var node in nodeInfos)
             {
-                MessageBox.Show("Layers were not scaned!", "Warnning", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                saveStringBuilder.Append(node.ID.ToString() + "," + node.ParentID.ToString() + "," + node.Text + "\n");
+            }
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                System.IO.StreamWriter file = System.IO.File.CreateText(saveFileDialog1.FileName);
+                file.Write(saveStringBuilder.ToString());
+                file.Close();
             }
         }
 
@@ -426,7 +397,7 @@ namespace AHP_Calculator
 
                 //读入成功，先清除当前会话
                 treeViewHierarchy.Nodes.Clear();
-                ScanLevel();
+                ScanLevel(true);
                 //分隔每行
                 string[] lines = CSVFileStr.Split('\n');
                 //建立节点数组
@@ -445,29 +416,209 @@ namespace AHP_Calculator
                     if (int.Parse(lineInfo[0]) >= 0)
                     {
                         //如果是节点行，将节点加入列表
-                        nodeInfotmp = new NodeInfo();
-                        nodeInfotmp.ID = int.Parse(lineInfo[0]);
-                        nodeInfotmp.ParentID = int.Parse(lineInfo[1]);
-                        nodeInfotmp.Text = lineInfo[2];
+                        nodeInfotmp = new NodeInfo
+                        {
+                            ID = int.Parse(lineInfo[0]),
+                            ParentID = int.Parse(lineInfo[1]),
+                            Text = lineInfo[2]
+                        };
                         nodesInfo.Add(nodeInfotmp);
                     }
-                    else
+                }
+
+                //开始重建层次结构
+                //首层加入
+                for (int i = 0; i < nodesInfo.Count; i++)
+                {
+                    if (((NodeInfo)nodesInfo[i]).ID.Equals(((NodeInfo)nodesInfo[i]).ParentID))
                     {
-                        //如果是矩阵行
-                        //新建矩阵
-                        string[,] currentMat = new string[int.Parse(lineInfo[1]), int.Parse(lineInfo[1])];
-                        for (int i = 2; i < lineInfo.Length; i++)
-                        {
-                            //从第三个读到末尾
-                            currentMat[(i - 2) % currentMat.GetLength(0),
-                                (i - 2) / currentMat.GetLength(0)] = lineInfo[i];
-                        }
-                        MatrixList.Add(currentMat);
+                        treeViewHierarchy.Nodes.Add(((NodeInfo)nodesInfo[i]).Text);
+                        break;
                     }
                 }
-                //开始重建层次结构
 
+                //把剩余的东西加入进去
+                TreeNode currentFindNode;
+                while (getTreeAllNodes().Length < nodesInfo.Count)
+                {
+                    for (int i = 0; i < nodesInfo.Count; i++)
+                    {
+                        if (((NodeInfo)nodesInfo[i]).ID.Equals(((NodeInfo)nodesInfo[i]).ParentID))
+                        {
+                            //跳过首层节点
+                            continue;
+                        }
+
+                        currentFindNode = findTreeNodeByText(findPrentName(
+                                ((NodeInfo)nodesInfo[i]).ParentID,
+                                nodesInfo
+                                )
+                        );
+
+                        if (currentFindNode != null)
+                        {
+                            //找到了，加进去
+                            currentFindNode.Nodes.Add(((NodeInfo)nodesInfo[i]).Text);
+                        }
+                    }
+                }
+
+                //重扫描层次，但不清除数组
+                ScanLevel(true);
+
+                treeViewHierarchy.ExpandAll();
             }
+        }
+
+        private string findPrentName(int parentID, ArrayList nodesInfo)
+        {
+            for (int i = 0; i < nodesInfo.Count; i++)
+            {
+                if (((NodeInfo)nodesInfo[i]).ID == parentID)
+                {
+                    return ((NodeInfo)nodesInfo[i]).Text;
+                }
+            }
+            return "";  //返回空字符串表示找不到父母，极有可能是顶层节点下的二级元素
+        }
+
+        private TreeNode[] getTreeAllNodes()
+        {
+            ArrayList nodesInAllLayer = new ArrayList();
+
+            //把层次中的每一层扫描出来,并把所有节点放入数组
+            TreeNode currentNode;
+            Queue<TreeNode> childrenQue = new Queue<TreeNode>();  //孩儿们，快来排队呀~
+            PutChildrenIntoQueue(treeViewHierarchy.Nodes, childrenQue);  //第一波父亲进入队列
+            nodesInAllLayer.Add(treeViewHierarchy.Nodes[0]);  //首层元素已被加入列表
+            while (childrenQue.Count() > 0)  //找儿子，直到没有要找儿子的父亲
+            {
+                currentNode = childrenQue.Dequeue();  //排头出列
+                if (GetNodeChildren(currentNode).Count != 0)
+                {
+                    //如果有儿子，把儿子加入队列并把儿子们加入数组
+                    PutChildrenIntoQueue(GetNodeChildren(currentNode), childrenQue);
+                    nodesInAllLayer.Add(currentNode);
+                }
+                else
+                {
+                    nodesInAllLayer.Add(currentNode);
+                }
+            }
+            return (TreeNode[])nodesInAllLayer.ToArray(typeof(TreeNode));
+        }
+
+        private TreeNode findTreeNodeByText(string text)
+        {
+            TreeNode[] AllNodes = getTreeAllNodes();
+
+            foreach (TreeNode node in AllNodes)
+            {
+                if (node.Text.Equals(text))
+                {
+                    return node;
+                }
+            }
+            return null;
+        }
+
+        private void importToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (LayerList.Count > 0)
+            //如果已经扫描了，有层次结构了
+            {
+                string CSVFileStr;
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    System.IO.StreamReader file = System.IO.File.OpenText(openFileDialog1.FileName);
+                    CSVFileStr = file.ReadToEnd();
+                    file.Close();
+                    //分隔每行
+                    string[] lines = CSVFileStr.Split('\n');
+                    string[] lineInfo;  //每行信息
+
+                    foreach (string line in lines)
+                    {
+                        //读入每行
+                        lineInfo = line.Split(',');
+                        if (lineInfo[0].Equals(""))
+                        {
+                            //跳过空行
+                            continue;
+                        }
+                        if (int.Parse(lineInfo[0]) < 0)
+                        {
+                            //如果是矩阵行
+                            //新建矩阵
+                            string[,] currentMat = new string[int.Parse(lineInfo[2]), int.Parse(lineInfo[2])];
+                            for (int i = 3; i < lineInfo.Length; i++)
+                            {
+                                //从第三个读到末尾
+                                currentMat[(i - 3) % currentMat.GetLength(0),
+                                    (i - 3) / currentMat.GetLength(0)] = lineInfo[i];
+                            }
+
+                            for (int i = 1; i < LayerList.Count; i++)
+                            {
+                                if (((TreeNodeCollection)LayerList[i])[0]
+                                    .Parent.Text.Equals(lineInfo[1]))
+                                {
+                                    MatrixList[i] = currentMat;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Layers were not scaned!", "Warnning", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
+
+        }
+
+        private void outPortToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (LayerList.Count > 0)
+            //如果已经扫描了，有层次结构了
+            {
+                //构建矩阵字符串
+                StringBuilder saveStringBuilder = new StringBuilder();
+                int MatrixIndex = 1;
+                foreach (string[,] matrix in MatrixList)
+                {
+                    if (matrix != null)
+                    {
+                        //记录ID和维数
+                        saveStringBuilder.Append("-" + MatrixIndex.ToString() + "," + ((TreeNodeCollection)LayerList[MatrixIndex])[0].Parent.Text + "," + matrix.GetLength(0).ToString());
+                        for (int i = 0; i < matrix.GetLength(0); i++)
+                        {
+                            for (int j = 0; j < matrix.GetLength(0); j++)
+                            {
+                                saveStringBuilder.Append("," + matrix[i, j]);
+                            }
+                        }
+                        saveStringBuilder.Append("\n");
+                        MatrixIndex++;
+                    }
+                }
+                //写入
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    System.IO.StreamWriter file = System.IO.File.CreateText(saveFileDialog1.FileName);
+                    file.Write(saveStringBuilder.ToString());
+                    file.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Layers were not scaned!", "Warnning", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
+        }
+
+        private void checkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
