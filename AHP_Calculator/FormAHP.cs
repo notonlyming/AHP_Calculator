@@ -347,5 +347,36 @@ namespace AHP_Calculator
             FormText formText = new FormText();
             formText.Show(stringBuilder.ToString());
         }
+
+        private void listBox1_DoubleClick(object sender, EventArgs e)
+        {
+            showToolStripMenuItem_Click(sender, e);
+        }
+
+        private void pairWiseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pairWiseToolStripMenuItem1_Click(sender, e);
+        }
+
+        private void scanToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            scanToolStripMenuItem_Click(sender, e);
+        }
+
+        private void checkToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                contextMenuStrip1.Show(new Point(this.Location.X + groupBoxMatrix.Location.X
+                    + listBox1.Location.X + e.Location.X+10,
+                    this.Location.Y + groupBoxMatrix.Location.Y
+                    + listBox1.Location.Y + e.Location.Y+35));
+            }
+        }
     }
 }
