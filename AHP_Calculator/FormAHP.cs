@@ -740,12 +740,12 @@ namespace AHP_Calculator
             string[,] currentMatrix;
             double[] WeightVector;
             MatrixOperater matrixOperater = new MatrixOperater();
-            ArrayList LayerWeightVectors = new ArrayList();  //各层次权重list，为了和层次list对上，第一个为null
+            Hashtable AllFactorWeights = new Hashtable();  //存储所有的权重
 
             System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();  //新建计时停表
             stopwatch.Restart();
 
-            if (checkMarix(ShowResultOrNot: false) == false)
+            if (checkMarix(ShowResultOrNot: false) == true)
             {
                 ReportStr.Append("Matrix check pass.\r\n\r\n");
                 for (int MatrixIndex = 1; MatrixIndex < MatrixList.Count; MatrixIndex++)
@@ -769,6 +769,7 @@ namespace AHP_Calculator
                     for (int i = 0; i < WeightVector.Length; i++)
                     {
                         ReportStr.Append(Math.Round(WeightVector[i], 4).ToString() + " ");
+                        AllFactorWeights.Add(((TreeNodeCollection)LayerList[MatrixIndex])[i].Text, WeightVector[i]);  //把得到的权重存起来
                     }
                     //换行
                     ReportStr.Append("\r\n");
@@ -779,7 +780,7 @@ namespace AHP_Calculator
 
                 //输出层次总排序
                 ReportStr.Append("\r\nTotal sorting weights：\r\n");
-                Hashtable totalSortingHashtable = GetTotalSortingWeightVector();
+                Hashtable totalSortingHashtable = GetTotalSortingWeightVector(AllFactorWeights);
                 foreach (string factor in totalSortingHashtable.Keys)
                 {
                     ReportStr.Append(factor + ": " + totalSortingHashtable[factor].ToString()+"\r\n");
@@ -796,10 +797,61 @@ namespace AHP_Calculator
             return ReportStr.ToString();
         }
 
-        private Hashtable GetTotalSortingWeightVector()
+        private string[] GetAllAncestorsName(TreeNode treeNode)
         {
-            Hashtable totalSortingHashtable = new Hashtable();
+            ArrayList arrayList = new ArrayList();
+            TreeNode currentParent = treeNode.Parent;
+            while (currentParent!=null)
+            {
+                arrayList.Add(currentParent.Text);
+                currentParent = currentParent.Parent;
+            }
+            return (string[])arrayList.ToArray(typeof(string));
+        }
 
+        private Hashtable GetTotalSortingWeightVector(Hashtable AllFactorWeights)
+        {
+            //最终只需要得到方案层的权重，所以应该只找叶子节点
+            Hashtable totalSortingHashtable = new Hashtable();
+            string[] names;
+            double WeightTmp = 1;
+            //遍历每个节点
+            for (int layerIndex = 0; layerIndex < LayerList.Count; layerIndex++)
+            {
+                for (int nodeInLayerIndex = 0; nodeInLayerIndex < ((TreeNodeCollection)LayerList[layerIndex]).Count; nodeInLayerIndex++)
+                {
+                    if (((TreeNodeCollection)LayerList[layerIndex])[nodeInLayerIndex].Nodes.Count == 0)
+                    {
+                        //这个是叶子节点
+                        //找祖宗
+                        names=GetAllAncestorsName(((TreeNodeCollection)LayerList[layerIndex])[nodeInLayerIndex]);
+                        //权重先为自己本身
+                        WeightTmp = (double)AllFactorWeights[((TreeNodeCollection)LayerList[layerIndex])[nodeInLayerIndex].Text];
+                        //刨根
+                        foreach (string name in names)
+                        {
+                            try
+                            {
+                                WeightTmp *= (double)AllFactorWeights[name];
+                            }
+                            catch (Exception)
+                            {
+                                if(AllFactorWeights[name]!=null)
+                                {
+                                    throw;
+                                }
+                            }
+                        }
+                        //添加加权好的权重
+                        totalSortingHashtable.Add(((TreeNodeCollection)LayerList[layerIndex])[nodeInLayerIndex].Text,WeightTmp);
+                    }
+                    else
+                    {
+                        //如果一节点的nodes有东西，那它不是叶子节点
+                        continue;  //下一个
+                    }
+                }
+            }
             return totalSortingHashtable;
         }
     }

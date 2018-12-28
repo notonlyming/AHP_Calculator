@@ -42,7 +42,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(175, 42);
             this.label1.TabIndex = 1;
-            this.label1.Text = "AHP Calculator 0.0.1 \r\n             By LittleMing";
+            this.label1.Text = "AHP Calculator 0.0.2 \r\n             By LittleMing";
             // 
             // pictureBox1
             // 
