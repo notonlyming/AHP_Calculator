@@ -350,7 +350,7 @@ namespace AHP_Calculator
                     }
                     FormSurvey formSurvey = new FormSurvey(FactorsString, CurrentLayer[0].Parent.Text, CurrentMatrix);
                     formSurvey.Show();
-                    stringBuilder.Append("------------------------------ \r\n");
+                    stringBuilder.Append("------------------------------------------------\r\n");
                     stringBuilder.Append(formSurvey.getAllQuestionText());
                     formSurvey.Close();
                 }
@@ -726,6 +726,81 @@ namespace AHP_Calculator
         {
             FormAbout formAbout = new FormAbout();
             formAbout.Show();
+        }
+
+        private void generateResultToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormText formText = new FormText();
+            formText.Show(GenerateReport());
+        }
+
+        private string GenerateReport()
+        {
+            StringBuilder ReportStr = new StringBuilder();
+            string[,] currentMatrix;
+            double[] WeightVector;
+            MatrixOperater matrixOperater = new MatrixOperater();
+            ArrayList LayerWeightVectors = new ArrayList();  //各层次权重list，为了和层次list对上，第一个为null
+
+            System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();  //新建计时停表
+            stopwatch.Restart();
+
+            if (checkMarix(ShowResultOrNot: false) == false)
+            {
+                ReportStr.Append("Matrix check pass.\r\n\r\n");
+                for (int MatrixIndex = 1; MatrixIndex < MatrixList.Count; MatrixIndex++)
+                {
+                    currentMatrix = (string[,])MatrixList[MatrixIndex];
+                    //输出该层因素
+                    ReportStr.Append("    "); //左上角表格留空
+                    for (int i = 0; i < currentMatrix.GetLength(0); i++)
+                    {
+                        ReportStr.Append(((TreeNodeCollection)LayerList[MatrixIndex])[i].Text + " ");
+                    }
+                    //换行
+                    ReportStr.Append("\r\n");
+                    //输出矩阵权重
+                    ReportStr.Append("W" + MatrixIndex.ToString() + " ");
+                    WeightVector = matrixOperater.GetEigenvectorOfMatrix(
+                            matrixOperater.conventStringMatrixIntoNumberArray(
+                                currentMatrix
+                            )
+                        );
+                    for (int i = 0; i < WeightVector.Length; i++)
+                    {
+                        ReportStr.Append(Math.Round(WeightVector[i], 4).ToString() + " ");
+                    }
+                    //换行
+                    ReportStr.Append("\r\n");
+                    //输出分隔符
+                    ReportStr.Append("------------------------------------------------\r\n");
+
+                }
+
+                //输出层次总排序
+                ReportStr.Append("\r\nTotal sorting weights：\r\n");
+                Hashtable totalSortingHashtable = GetTotalSortingWeightVector();
+                foreach (string factor in totalSortingHashtable.Keys)
+                {
+                    ReportStr.Append(factor + ": " + totalSortingHashtable[factor].ToString()+"\r\n");
+                }
+
+                ReportStr.Append("------------------------------------------------\r\n");
+                stopwatch.Stop();
+                ReportStr.Append("Checking finish in " + stopwatch.Elapsed.TotalMilliseconds.ToString() + "ms.\r\n");
+            }
+            else
+            {
+                ReportStr.Append("Matrix check not pass!");
+            }
+            return ReportStr.ToString();
+        }
+
+        private Hashtable GetTotalSortingWeightVector()
+        {
+            Hashtable totalSortingHashtable = new Hashtable();
+
+            return totalSortingHashtable;
         }
     }
 }

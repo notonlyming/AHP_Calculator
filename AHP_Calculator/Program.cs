@@ -65,8 +65,8 @@ namespace AHP_Calculator
         {
             //AWi/Wi的和求算术平均
             double result = 0;
-            double[] W = GetEigenvactorOfMatrix(Matrix);  //求权向量
-            double[] AW = MatrixMultiplyVactor(Matrix, W);  //求AW乘积
+            double[] W = GetEigenvectorOfMatrix(Matrix);  //求权向量
+            double[] AW = MatrixMultiplyvector(Matrix, W);  //求AW乘积
             //加和
             for (int i = 0; i < W.Length; i++)
             {
@@ -77,24 +77,24 @@ namespace AHP_Calculator
             return result;
         }
 
-        public double[] MatrixMultiplyVactor(double[,] Matrix, double[] vactor)
+        public double[] MatrixMultiplyvector(double[,] Matrix, double[] vector)
         {
-            if (Matrix.GetLength(0) == vactor.Length)
+            if (Matrix.GetLength(0) == vector.Length)
             {
-                double[] resultVactor = new double[vactor.Length];
+                double[] resultvector = new double[vector.Length];
                 double sum = 0;
-                for (int rowIndex = 0; rowIndex < vactor.Length; rowIndex++)
+                for (int rowIndex = 0; rowIndex < vector.Length; rowIndex++)
                 {
                     sum = 0;
-                    for (int columnIndex = 0; columnIndex < vactor.Length; columnIndex++)
+                    for (int columnIndex = 0; columnIndex < vector.Length; columnIndex++)
                     {
                         //每行元素与向量元素乘积加合
-                        sum += (Matrix[rowIndex,columnIndex]*vactor[columnIndex]);
+                        sum += (Matrix[rowIndex,columnIndex]*vector[columnIndex]);
                     }
                     //搞定赋值
-                    resultVactor[rowIndex]  = sum;
+                    resultvector[rowIndex]  = sum;
                 }
-                return resultVactor;
+                return resultvector;
             }
             else
             {
@@ -102,7 +102,7 @@ namespace AHP_Calculator
             }
         }
 
-        public double[] GetEigenvactorOfMatrix(double[,] Matrix)
+        public double[] GetEigenvectorOfMatrix(double[,] Matrix)
         {
             //复制一下
             double[,] ColumnNormalizedMatrix = new double[Matrix.GetLength(0),Matrix.GetLength(1)];
