@@ -53,6 +53,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormSurvey";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.FormSurvey_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
