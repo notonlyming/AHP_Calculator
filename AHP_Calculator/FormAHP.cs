@@ -29,6 +29,7 @@ namespace AHP_Calculator
             {
                 treeViewHierarchy.SelectedNode = treeViewHierarchy.Nodes[0];
             }
+            MaximumSize = Size;  //窗口不可调
         }
 
         private void ScanLevel(bool clearPriviousMatrix)

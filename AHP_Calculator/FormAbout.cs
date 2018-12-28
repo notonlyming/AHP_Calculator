@@ -29,5 +29,10 @@ namespace AHP_Calculator
             }
 
         }
+
+        private void FormAbout_Load(object sender, EventArgs e)
+        {
+            MaximumSize = Size;
+        }
     }
 }

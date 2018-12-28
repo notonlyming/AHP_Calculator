@@ -43,7 +43,7 @@ namespace AHP_Calculator
             textBoxes = new TextBox[Factor.Length, Factor.Length];
         }
 
-        private void FormMatrix_Load(object sender, EventArgs e)
+        private void BuildFactor()
         {
             //Build Factors
             for (int i = 0; i < LabelColumnFactors.Length; i++)
@@ -69,16 +69,20 @@ namespace AHP_Calculator
                 if (i == 0)
                 {
                     LabelColumnFactors[i].Location = new Point(LabelParentFactor.Left + LabelParentFactor.Width, LabelParentFactor.Top);
-                    LabelRowFactors[i].Location = new Point(LabelParentFactor.Left,LabelParentFactor.Top + LabelParentFactor.Height);
+                    LabelRowFactors[i].Location = new Point(LabelParentFactor.Left, LabelParentFactor.Top + LabelParentFactor.Height);
                 }
                 else
                 {
-                    LabelColumnFactors[i].Location = new Point(LabelColumnFactors[i - 1].Left + LabelColumnFactors[i - 1].Width,LabelParentFactor.Top);
-                    LabelRowFactors[i].Location = new Point(LabelParentFactor.Left,LabelRowFactors[i - 1].Top + LabelRowFactors[i - 1].Height);
+                    LabelColumnFactors[i].Location = new Point(LabelColumnFactors[i - 1].Left + LabelColumnFactors[i - 1].Width, LabelParentFactor.Top);
+                    LabelRowFactors[i].Location = new Point(LabelParentFactor.Left, LabelRowFactors[i - 1].Top + LabelRowFactors[i - 1].Height);
                 }
                 this.Controls.Add(LabelColumnFactors[i]);
                 this.Controls.Add(LabelRowFactors[i]);
             }
+        }
+
+        private void BuildTable()
+        {
             //build table
             int matrixSize = Factor.Length;
             for (int i = 0; i < matrixSize; i++)
@@ -111,6 +115,11 @@ namespace AHP_Calculator
                     }
                 }
             }
+        }
+
+        private void FillTable()
+        {
+
             //fill table
             for (int i = 0; i < Factor.Length; i++)
             {
@@ -119,9 +128,17 @@ namespace AHP_Calculator
                     textBoxes[i, j].Text = PairMatrix[i, j];
                 }
             }
+        }
+
+        private void FormMatrix_Load(object sender, EventArgs e)
+        {
+            BuildFactor();
+            BuildTable();
+            FillTable();
             //resize form
             this.Size = new Size(LabelColumnFactors[Factor.Length - 1].Left + UniformSize.Width + contralMargin.X + 20,
                 LabelRowFactors[Factor.Length - 1].Top + UniformSize.Height + contralMargin.Y + 40);
+            MinimumSize = Size;  //窗口不可调
         }
     }
 }
