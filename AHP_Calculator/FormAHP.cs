@@ -627,12 +627,18 @@ namespace AHP_Calculator
 
         private void checkToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            checkMarix(ShowResultOrNot: true);
+        }
+
+        private bool checkMarix(bool ShowResultOrNot)
+        {
             StringBuilder checkResultStr = new StringBuilder();
             StringBuilder MatrixNotOKPrompt = new StringBuilder();
             MatrixOperater matrixOperater = new MatrixOperater();
             ArrayList checkResultList;
             string[,] currentMatrix;
             bool matrixComplete = true;
+            bool AllPass = true;
             System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();  //新建计时停表
             stopwatch.Restart();
             for (int MatrixIndex = 1; MatrixIndex < MatrixList.Count; MatrixIndex++)
@@ -692,20 +698,28 @@ namespace AHP_Calculator
             {
                 //如果没有不OK的矩阵
                 checkResultStr.Append("Congratulations, All Matrix pass the test!\r\n");
+                AllPass = true;
             }
-            else if(matrixComplete)
+            else if (matrixComplete)
             {
                 checkResultStr.Append("Some matrix given in the following did not pass the test, check and retest.\r\n");
                 checkResultStr.Append(MatrixNotOKPrompt.ToString() + "\r\n");
+                AllPass = false;
             }
             else
             {
                 checkResultStr.Append("Some matrix not complete, check and retest.\r\n");
+                AllPass = false;
             }
 
-            //显示结果
-            FormText formText = new FormText();
-            formText.Show(checkResultStr.ToString());
+            if (ShowResultOrNot)
+            {
+                //显示结果
+                FormText formText = new FormText();
+                formText.Show(checkResultStr.ToString());
+            }
+
+            return AllPass;
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
