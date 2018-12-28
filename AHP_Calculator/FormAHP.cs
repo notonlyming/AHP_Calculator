@@ -32,7 +32,7 @@ namespace AHP_Calculator
             MaximumSize = Size;  //窗口不可调
         }
 
-        private void ScanLevel(bool clearPriviousMatrix)
+        private void ScanLevel(bool ClearOrNot, bool PromptOrNot)
         {
 
             if (treeViewHierarchy.Nodes.Count == 0)
@@ -44,9 +44,9 @@ namespace AHP_Calculator
                 return;
             }
 
-            if (MessageBox.Show("This operation will clear all privious pair-wise matrix, continue?",
+            if (PromptOrNot ? MessageBox.Show("This operation will clear all privious pair-wise matrix, continue?",
                 "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2, 0)
-                == DialogResult.Yes)
+                == DialogResult.Yes : true)
             {
                 //把层次中的每一层扫描出来
                 TreeNode currentNode;
@@ -83,7 +83,7 @@ namespace AHP_Calculator
                 }
 
                 //为每一层构造成对比较矩阵
-                if (clearPriviousMatrix)
+                if (ClearOrNot)
                 {
                     MatrixList.Clear();  //每次重新生成前清除之前的结果
                     foreach (TreeNodeCollection layer in LayerList)
@@ -169,11 +169,15 @@ namespace AHP_Calculator
         {
             if (treeViewHierarchy.Nodes.Count < 1)
             {
-                treeViewHierarchy.Nodes.Add(Microsoft.VisualBasic.Interaction.InputBox("Please enter node text.", "Title needed"));
+                string rootText = Microsoft.VisualBasic.Interaction.InputBox("Please enter node text.", "Title needed");
+                if (!rootText.Equals(""))
+                {
+                    treeViewHierarchy.Nodes.Add(rootText);
+                }
             }
             else
             {
-                MessageBox.Show("Just one root!");
+                MessageBox.Show("Just one root at most!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, 0);
             }
         }
 
@@ -192,15 +196,19 @@ namespace AHP_Calculator
             if (treeViewHierarchy.SelectedNode != null)
             {
                 string addSubStr = Microsoft.VisualBasic.Interaction.InputBox("Please enter node text.", "Title needed");
-                if (findTreeNodeByText(addSubStr) == null)
+                if (!addSubStr.Equals(""))
                 {
-                    treeViewHierarchy.SelectedNode.Nodes.Add(addSubStr);
+                    if (findTreeNodeByText(addSubStr) == null)
+                    {
+                        treeViewHierarchy.SelectedNode.Nodes.Add(addSubStr);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Same name node exist!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, 0);
+                        treeViewHierarchy.SelectedNode = findTreeNodeByText(addSubStr);
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Same neme node exist!");
-                    treeViewHierarchy.SelectedNode = findTreeNodeByText(addSubStr);
-                }
+
             }
         }
 
@@ -209,13 +217,13 @@ namespace AHP_Calculator
             if (MessageBox.Show("Want to clear? This will reset this project!!!", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
             {
                 treeViewHierarchy.Nodes.Clear();
-                ScanLevel(true);
+                ScanLevel(true, true);
             }
         }
 
         private void scanToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ScanLevel(true);
+            ScanLevel(true, true);
         }
 
         private void showToolStripMenuItem_Click(object sender, EventArgs e)
@@ -407,7 +415,7 @@ namespace AHP_Calculator
 
                 //读入成功，先清除当前会话
                 treeViewHierarchy.Nodes.Clear();
-                ScanLevel(true);
+                ScanLevel(true, false);
                 //分隔每行
                 string[] lines = CSVFileStr.Split('\n');
                 //建立节点数组
@@ -474,7 +482,7 @@ namespace AHP_Calculator
                 }
 
                 //重扫描层次，但不清除数组
-                ScanLevel(true);
+                ScanLevel(true, false);
 
                 treeViewHierarchy.ExpandAll();
             }
@@ -854,6 +862,19 @@ namespace AHP_Calculator
                 }
             }
             return totalSortingHashtable;
+        }
+
+        private void FormAHP_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Want to quit? Rember save your work ^_^", "Confirm", MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            {
+                e.Cancel = false;
+            }
+            else
+            {
+                e.Cancel = true;
+            }
         }
     }
 }
