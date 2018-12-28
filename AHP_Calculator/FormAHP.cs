@@ -866,7 +866,7 @@ namespace AHP_Calculator
 
         private void FormAHP_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Want to quit? Rember save your work ^_^", "Confirm", MessageBoxButtons.YesNo,
+            if (MessageBox.Show("Want to quit? Remember to save your work ^_^", "Confirm", MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
             {
                 e.Cancel = false;
