@@ -154,5 +154,20 @@ namespace AHP_Calculator
             }
             return w;
         }
+
+        public bool IsMatrixHasZero(string[,] Matrix) 
+        {
+            for (int i = 0; i < Matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < Matrix.GetLength(1); j++)
+                {
+                    if (Matrix[i,j].Equals("0"))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
     }
 }

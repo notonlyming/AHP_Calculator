@@ -376,7 +376,7 @@ namespace AHP_Calculator
 
         private void checkToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-
+            checkToolStripMenuItem_Click(sender, e);
         }
 
         private void listBoxMatrix_MouseDown(object sender, MouseEventArgs e)
@@ -627,7 +627,85 @@ namespace AHP_Calculator
 
         private void checkToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            StringBuilder checkResultStr = new StringBuilder();
+            StringBuilder MatrixNotOKPrompt = new StringBuilder();
+            MatrixOperater matrixOperater = new MatrixOperater();
+            ArrayList checkResultList;
+            string[,] currentMatrix;
+            bool matrixComplete = true;
+            System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();  //新建计时停表
+            stopwatch.Restart();
+            for (int MatrixIndex = 1; MatrixIndex < MatrixList.Count; MatrixIndex++)
+            {
+                //显示正在检查那个数组
+                checkResultStr.Append("Checking " +
+                    listBoxMatrix.Items[MatrixIndex - 1].ToString() + "\r\n");
+                //将该数组信息输出
+                currentMatrix = (string[,])MatrixList[MatrixIndex];
+                for (int i = 0; i < currentMatrix.GetLength(0); i++)
+                {
+                    for (int j = 0; j < currentMatrix.GetLength(1); j++)
+                    {
+                        checkResultStr.Append(currentMatrix[i, j]);
+                        //检查是否要插入制表符
+                        if (j < currentMatrix.GetLength(1) - 1)
+                        {
+                            checkResultStr.Append("\t");
+                        }
+                    }
+                    checkResultStr.Append("\r\n");
+                }
+                //再换一行，准备输出计算结果和判断结果
+                checkResultStr.Append("\r\n");
 
+                //检查数组是否已经填写完毕
+                if (matrixOperater.IsMatrixHasZero(currentMatrix))
+                {
+                    checkResultStr.Append("This matrix not complete(Zero detected)!\r\n");
+                    matrixComplete = false;
+                }
+                else
+                {
+                    //输出计算结果
+                    checkResultList = matrixOperater.CheckMatrix(
+                            matrixOperater.conventStringMatrixIntoNumberArray(
+                                currentMatrix
+                            )
+                        );
+                    checkResultStr.Append("CI = " + checkResultList[0] + " CR = " + checkResultList[1] +
+                        " CR < 0.1? " + (((bool)checkResultList[2]) ? "YES" : "NO") + "\r\n");
+                    //如果有超限数组，加入提示
+                    if ((bool)checkResultList[2] == false)
+                    {
+                        MatrixNotOKPrompt.Append(listBoxMatrix.Items[MatrixIndex - 1].ToString() + "\r\n");
+                    }
+                }
+                //输出分隔符
+                checkResultStr.Append("------------------------------------------------\r\n");
+            }
+
+            //检查结束
+            stopwatch.Stop();
+            checkResultStr.Append("Checking finish in " + stopwatch.Elapsed.TotalMilliseconds.ToString() + "ms.\r\n");
+            //输出检查结果
+            if (MatrixNotOKPrompt.ToString().Equals("") && matrixComplete)
+            {
+                //如果没有不OK的矩阵
+                checkResultStr.Append("Congratulations, All Matrix pass the test!\r\n");
+            }
+            else if(matrixComplete)
+            {
+                checkResultStr.Append("Some matrix given in the following did not pass the test, check and retest.\r\n");
+                checkResultStr.Append(MatrixNotOKPrompt.ToString() + "\r\n");
+            }
+            else
+            {
+                checkResultStr.Append("Some matrix not complete, check and retest.\r\n");
+            }
+
+            //显示结果
+            FormText formText = new FormText();
+            formText.Show(checkResultStr.ToString());
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
