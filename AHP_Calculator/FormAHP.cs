@@ -876,5 +876,15 @@ namespace AHP_Calculator
                 e.Cancel = true;
             }
         }
+
+        private void quikStartToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://littleming.xyz/resource/AHP/AHPCalHelp.htm");
+        }
+
+        private void checkUpdateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://littleming.xyz/resource/AHP/");
+        }
     }
 }

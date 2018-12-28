@@ -26,16 +26,16 @@
     <MapFileExtensions>false</MapFileExtensions>
     <InstallUrl>https://littleming.xyz/resource/AHP/</InstallUrl>
     <UpdateUrl>https://littleming.xyz/resource/AHP/</UpdateUrl>
-    <SupportUrl>https://littleming.xyz</SupportUrl>
-    <ErrorReportUrl>https://littleming.xyz</ErrorReportUrl>
+    <SupportUrl>https://littleming.xyz/resource/AHP/</SupportUrl>
+    <ErrorReportUrl>https://littleming.xyz/resource/AHP/AHPCalHelp.htm</ErrorReportUrl>
     <ProductName>AHP Calculator</ProductName>
     <PublisherName>LittleMing</PublisherName>
     <SuiteName>AHP Calculator</SuiteName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>2</ApplicationRevision>
-    <ApplicationVersion>0.0.2.%2a</ApplicationVersion>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>0.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
