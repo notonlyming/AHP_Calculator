@@ -337,8 +337,8 @@ namespace AHP_Calculator
             for (int index = 0; index < listBoxMatrix.Items.Count; index++)
             {
                 //取出当前矩阵和层次
-                TreeNodeCollection CurrentLayer = ((TreeNodeCollection[])LayerList.ToArray(typeof(TreeNodeCollection)))[index];
-                string[,] CurrentMatrix = ((string[][,])MatrixList.ToArray(typeof(string[,])))[index];
+                TreeNodeCollection CurrentLayer = ((TreeNodeCollection[])LayerList.ToArray(typeof(TreeNodeCollection)))[index + 1];
+                string[,] CurrentMatrix = ((string[][,])MatrixList.ToArray(typeof(string[,])))[index + 1];
                 if (CurrentMatrix != null)
                 {
                     string[] FactorsString = new string[CurrentLayer.Count];
@@ -784,7 +784,7 @@ namespace AHP_Calculator
                 Hashtable totalSortingHashtable = GetTotalSortingWeightVector(AllFactorWeights);
                 foreach (string factor in totalSortingHashtable.Keys)
                 {
-                    ReportStr.Append(factor + ": " + totalSortingHashtable[factor].ToString()+"\r\n");
+                    ReportStr.Append(factor + ": " + totalSortingHashtable[factor].ToString() + "\r\n");
                 }
 
                 ReportStr.Append("------------------------------------------------\r\n");
@@ -802,7 +802,7 @@ namespace AHP_Calculator
         {
             ArrayList arrayList = new ArrayList();
             TreeNode currentParent = treeNode.Parent;
-            while (currentParent!=null)
+            while (currentParent != null)
             {
                 arrayList.Add(currentParent.Text);
                 currentParent = currentParent.Parent;
@@ -825,7 +825,7 @@ namespace AHP_Calculator
                     {
                         //这个是叶子节点
                         //找祖宗
-                        names=GetAllAncestorsName(((TreeNodeCollection)LayerList[layerIndex])[nodeInLayerIndex]);
+                        names = GetAllAncestorsName(((TreeNodeCollection)LayerList[layerIndex])[nodeInLayerIndex]);
                         //权重先为自己本身
                         WeightTmp = (double)AllFactorWeights[((TreeNodeCollection)LayerList[layerIndex])[nodeInLayerIndex].Text];
                         //刨根
@@ -837,14 +837,14 @@ namespace AHP_Calculator
                             }
                             catch (Exception)
                             {
-                                if(AllFactorWeights[name]!=null)
+                                if (AllFactorWeights[name] != null)
                                 {
                                     throw;
                                 }
                             }
                         }
                         //添加加权好的权重
-                        totalSortingHashtable.Add(((TreeNodeCollection)LayerList[layerIndex])[nodeInLayerIndex].Text,WeightTmp);
+                        totalSortingHashtable.Add(((TreeNodeCollection)LayerList[layerIndex])[nodeInLayerIndex].Text, WeightTmp);
                     }
                     else
                     {
