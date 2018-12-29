@@ -239,21 +239,21 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.quitToolStripMenuItem.Text = "Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
@@ -301,21 +301,21 @@
             // scanToolStripMenuItem
             // 
             this.scanToolStripMenuItem.Name = "scanToolStripMenuItem";
-            this.scanToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.scanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.scanToolStripMenuItem.Text = "Scan";
             this.scanToolStripMenuItem.Click += new System.EventHandler(this.scanToolStripMenuItem_Click);
             // 
             // showToolStripMenuItem
             // 
             this.showToolStripMenuItem.Name = "showToolStripMenuItem";
-            this.showToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.showToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.showToolStripMenuItem.Text = "Show";
             this.showToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
             // 
             // checkToolStripMenuItem
             // 
             this.checkToolStripMenuItem.Name = "checkToolStripMenuItem";
-            this.checkToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.checkToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.checkToolStripMenuItem.Text = "Check";
             this.checkToolStripMenuItem.Click += new System.EventHandler(this.checkToolStripMenuItem_Click);
             // 
@@ -332,21 +332,21 @@
             // pairWiseToolStripMenuItem1
             // 
             this.pairWiseToolStripMenuItem1.Name = "pairWiseToolStripMenuItem1";
-            this.pairWiseToolStripMenuItem1.Size = new System.Drawing.Size(170, 22);
+            this.pairWiseToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.pairWiseToolStripMenuItem1.Text = "Pair wise";
             this.pairWiseToolStripMenuItem1.Click += new System.EventHandler(this.pairWiseToolStripMenuItem1_Click);
             // 
             // exportTextToolStripMenuItem
             // 
             this.exportTextToolStripMenuItem.Name = "exportTextToolStripMenuItem";
-            this.exportTextToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.exportTextToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exportTextToolStripMenuItem.Text = "Export survey";
             this.exportTextToolStripMenuItem.Click += new System.EventHandler(this.exportTextToolStripMenuItem_Click);
             // 
             // generateResultToolStripMenuItem
             // 
             this.generateResultToolStripMenuItem.Name = "generateResultToolStripMenuItem";
-            this.generateResultToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.generateResultToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.generateResultToolStripMenuItem.Text = "Generate report";
             this.generateResultToolStripMenuItem.Click += new System.EventHandler(this.generateResultToolStripMenuItem_Click);
             // 
@@ -363,21 +363,21 @@
             // quikStartToolStripMenuItem
             // 
             this.quikStartToolStripMenuItem.Name = "quikStartToolStripMenuItem";
-            this.quikStartToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.quikStartToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.quikStartToolStripMenuItem.Text = "Quik start";
             this.quikStartToolStripMenuItem.Click += new System.EventHandler(this.quikStartToolStripMenuItem_Click);
             // 
             // checkUpdateToolStripMenuItem
             // 
             this.checkUpdateToolStripMenuItem.Name = "checkUpdateToolStripMenuItem";
-            this.checkUpdateToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.checkUpdateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.checkUpdateToolStripMenuItem.Text = "Check update";
             this.checkUpdateToolStripMenuItem.Click += new System.EventHandler(this.checkUpdateToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -414,7 +414,7 @@
             // saveFileDialog1
             // 
             this.saveFileDialog1.DefaultExt = "csv";
-            this.saveFileDialog1.Filter = "csv 逗号分隔符文件|*.csv|所有文件|*.*";
+            this.saveFileDialog1.Filter = "csv 逗号分隔符文件|*.csv";
             // 
             // openFileDialog1
             // 

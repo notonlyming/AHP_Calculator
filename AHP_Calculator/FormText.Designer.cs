@@ -34,11 +34,11 @@
             // textBoxText
             // 
             this.textBoxText.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBoxText.Location = new System.Drawing.Point(39, 54);
+            this.textBoxText.Location = new System.Drawing.Point(62, 39);
             this.textBoxText.Multiline = true;
             this.textBoxText.Name = "textBoxText";
             this.textBoxText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxText.Size = new System.Drawing.Size(352, 303);
+            this.textBoxText.Size = new System.Drawing.Size(500, 418);
             this.textBoxText.TabIndex = 0;
             // 
             // FormText
