@@ -1,0 +1,298 @@
+commit 8ee9e8edd54bf5b67568ff5e1d8b53ba151d7a4b
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Sun Dec 30 05:45:13 2018 +0800
+
+    添加了层次结构树的右键菜单。
+
+commit 59265754e47546220dbd7e4fb297bb8b9cf3ef2d
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Sun Dec 30 05:33:50 2018 +0800
+
+    为文本窗口添加了保存当前文本的功能。
+
+commit d73e1fd32fe7bc0d07da586ae18eb6a8f3d33266
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Sun Dec 30 05:18:08 2018 +0800
+
+    文本显示窗口现在可显示具体内容的标题。
+
+commit 201e6cb06e32f35918131701285e40eea01699ec
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Sun Dec 30 05:12:58 2018 +0800
+
+    添加了问卷导出时，同时导出问题和答案的选项。
+
+commit 105d622c7fbb9a5faa5d26774c64e6cbc550ea03
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Sun Dec 30 04:57:02 2018 +0800
+
+    优化添加子节点提示信息。
+    添加了更改当前层次使扫描矩阵清空的逻辑。
+
+commit 2ac985ba7b867f9e04bbfe30031733606963bd00
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Sun Dec 30 04:32:40 2018 +0800
+
+    更新版本号为0.1.1.0
+
+commit 060ed65640cff6988f29cfb127910ff801e0681a
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Sun Dec 30 04:28:33 2018 +0800
+
+    修复语法错误。
+
+commit f79e0018e47bae101345b1e6e0722ed831f741f6
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Sun Dec 30 04:27:18 2018 +0800
+
+    设置矩阵浏览器表格为只读，不可输入。
+
+commit d556e0408061c6f59d86f92bfecf6fb679d14c5e
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Sun Dec 30 04:25:44 2018 +0800
+
+    修复了矩阵输入框只能输入一个字符的BUG。
+
+commit 909efaf7319d6fc840b5afc8c3ce03c9d5cc8a55
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Sun Dec 30 04:20:24 2018 +0800
+
+    封装了回到顶层功能。
+    添加了打开文件后，自动回到顶层实现。
+
+commit 6122ae32de6518909c04d777be61c0992a716c0f
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Sun Dec 30 04:15:24 2018 +0800
+
+    合并添加根节点和添加子节点，简化操作。
+
+commit 9a37366ae2d7f637124a6dedc92289d138b688c2
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Sun Dec 30 04:07:01 2018 +0800
+
+    合并了保存层次和保存矩阵的操作。更新了关于版本号。
+
+commit ae11bc35fe214e95419cabcf737f6e17bbd8ecde
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Sat Dec 29 00:33:54 2018 +0800
+
+    添加更新链接，支持链接。
+
+commit 540d51d70500575f1c3719caf50a722c3e4ef02f
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Sat Dec 29 00:26:20 2018 +0800
+
+    英文调整
+
+commit 7ce9452ff01b5a7d779e89c6014dd7147f89e25c
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Sat Dec 29 00:05:26 2018 +0800
+
+    修复了英文name拼写错误。
+    修复了添加节点时取消操作还添加。
+    添加了退出程序提示的功能。
+    修复了打开文件提示是非迁出先前的数组的问题。
+
+commit 0319ae2ab9eb1201b75f16ed5d2600a17405e325
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Fri Dec 28 23:44:34 2018 +0800
+
+    修复了无法导出第一个矩阵的问卷的BUG
+
+commit dcde7a5927f534839d02fb39ef62ac51b2e1d71a
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Fri Dec 28 22:41:36 2018 +0800
+
+    使一些窗口显示在最前面，居中显示一些窗口
+
+commit 763805af3fa2522eb391af505a8342b9353e9eba
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Fri Dec 28 22:38:07 2018 +0800
+
+    封装聚准显示窗口部分代码段。设置一些窗口不可调。
+
+commit 88f2f9a7d004000a8f00d153df06ffb7e78e9bb6
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Fri Dec 28 22:32:07 2018 +0800
+
+    完成层次总排序功能，取消为了调试修改的不经过一致性检验即可总排序的逻辑
+
+commit edf08cde082beaa05a4690b278aaaafb7b502179
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Fri Dec 28 21:20:14 2018 +0800
+
+    完成报告输出，添加层次总排序功能空壳
+
+commit 3c2eded91f61cc79389641c7dea3aafa37875d95
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Fri Dec 28 20:33:03 2018 +0800
+
+    封装检查数组功能
+
+commit 94e79887e3349879550907fa65a63cbd4bae3608
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Fri Dec 28 20:25:44 2018 +0800
+
+    完成矩阵检查的功能
+
+commit 776ae534a4562377b0197c7d3b50de0cb15c7490
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Fri Dec 28 19:17:00 2018 +0800
+
+    完成矩阵运算核心代码部分
+
+commit 59f5ef5a0415389c8246962c9e179b05d6e2b22b
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Fri Dec 28 16:27:20 2018 +0800
+
+    更改框架为.Net4.0
+
+commit f1708a7c925ed9842bd9a79caaabba716e9ddcde
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Fri Dec 28 12:49:05 2018 +0800
+
+    添加关于窗口
+
+commit 787548e5972aa193f5ff91711b5efb049aed8f30
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Fri Dec 28 00:55:52 2018 +0800
+
+    添加了图标
+
+commit 5402c8d9e47504caedee25fa285beb309cd030fa
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Fri Dec 28 00:39:01 2018 +0800
+
+    添加矩阵操作者占坑
+
+commit 0e504c0a463822dae9fffefc21e108498bb07da0
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Fri Dec 28 00:33:09 2018 +0800
+
+    添加层次所有节点不能重名的判断。添加不能添加两个根节点的逻辑。调整添加根节点菜单的次序。
+
+commit cdfeeea9fe14c9be8e969026f5e5947914172b9c
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Fri Dec 28 00:26:47 2018 +0800
+
+    完成输入输出功能
+
+commit d8be492c319c9814c0ad8b4c43c96a307a1a54c3
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Thu Dec 27 21:21:46 2018 +0800
+
+    写了一半打开文件
+
+commit 3e4b23d65e1ff2aa1c75a57c89ef8e2dafd2320e
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Thu Dec 27 19:37:46 2018 +0800
+
+    修正写入文件格式逻辑错误
+
+commit 8e1a3290fb2af596ffb727e7b7661171ab0fcf27
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Thu Dec 27 18:12:57 2018 +0800
+
+    完成文件保存功能
+
+commit 12399844949fe7d93036314c95bd25aeec5b9862
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Thu Dec 27 17:33:52 2018 +0800
+
+    更改了窗口显示行为
+
+commit ae203ad5c3bb228b69f35b6da1bc258e8dda5785
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Thu Dec 27 17:30:58 2018 +0800
+
+    添加了右键菜单功能
+
+commit 882592ff0d8e55ef339f7d9a0c62fd849f942afc
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Thu Dec 27 17:07:57 2018 +0800
+
+    添加了导出问卷文本的功能
+
+commit 00397ce4db82a582a88f52c2ec6ed2aa3a5a9916
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Wed Dec 26 17:29:40 2018 +0800
+
+    添加存储树状结构的代码
+
+commit 9a1257e296e9cfe3911dde6747d1ccd60dc3bf99
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Wed Dec 26 16:20:43 2018 +0800
+
+    更改用户交互方式为菜单点击交互
+
+commit 48b22bca650117d0ebc2f0b0dc3b0fda5fc160c9
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Wed Dec 26 15:58:09 2018 +0800
+
+    更改窗口的一些交互功能
+
+commit d1a80d61c43799c4c6f87d2c692e685a4aa08e5e
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Wed Dec 26 15:39:34 2018 +0800
+
+    为Clear按钮添加清除所有东西的逻辑
+
+commit f378c68b57ef28133ccc0de21645b0a9c0771df7
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Wed Dec 26 15:32:11 2018 +0800
+
+    添加重新扫描丢失数据的提示。重新扫描时清空之前的东西。
+
+commit 99df26498c21152d863839654331bb4b985024ab
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Wed Dec 26 15:24:54 2018 +0800
+
+    完成层次扫描，矩阵和层次内部结构表示
+
+commit a416377187c828700511122eeb645b2a9459d2b5
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Sat Dec 22 17:37:00 2018 +0800
+
+    完成调查问卷与矩阵相互转化的功能
+
+commit 846946490ef107d24535c44147884b32016c7ae8
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Sat Dec 22 16:37:00 2018 +0800
+
+    完成问卷基本界面
+
+commit ffdce3b2d40720219a43f12de25a9202fc9b03c8
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Sat Dec 22 16:12:03 2018 +0800
+
+    更新ui。添加创建调查问卷基本问题。
+
+commit 80cdfda0b13d6c6c4561edad978e9532ad03882e
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Sat Dec 22 11:34:18 2018 +0800
+
+    add matrix form. ui midify.
+
+commit 8f670c04fb175abca510f2aa8b1fa6de7fd9fcaf
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Sat Dec 22 02:42:07 2018 +0800
+
+    Basic ui function
+
+commit 2702fd851e648a85bd57a17c84818ef9d0bc9bd6
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Fri Dec 21 13:57:58 2018 +0800
+
+    inital
+
+commit d1821e7ebc1c1fe0c23583099578d3e1af875c81
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Fri Dec 21 13:46:31 2018 +0800
+
+    添加项目文件。
+
+commit ca5fe62f4f055344d35f030038a303de73e98865
+Author: littleming <42286434+notonlyming@users.noreply.github.com>
+Date:   Fri Dec 21 13:46:28 2018 +0800
+
+    添加 .gitignore 和 .gitattributes。

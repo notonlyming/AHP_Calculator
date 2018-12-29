@@ -191,6 +191,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bird.ico" />
+    <EmbeddedResource Include="Resources\changelog.txt" />
     <None Include="Resources\三叶草small.png" />
     <None Include="Resources\鸟.png" />
   </ItemGroup>

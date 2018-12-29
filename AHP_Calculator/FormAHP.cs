@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
+using System.Resources;
+using System.Reflection;
+using System.IO;
 
 namespace AHP_Calculator
 {
@@ -926,6 +929,15 @@ namespace AHP_Calculator
                 contextMenuStripForHierarchy.Show(Location.X + groupBoxHierarchy.Location.X + treeViewHierarchy.Location.X + e.X + 10,
                     Location.Y + groupBoxHierarchy.Location.Y + treeViewHierarchy.Location.Y + e.Y + 33);
             }
+        }
+
+        private void showVersionChangeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Assembly assm = Assembly.GetExecutingAssembly();
+            Stream istr = assm.GetManifestResourceStream("AHP_Calculator.Resources.changelog.txt");
+            StreamReader sr = new StreamReader(istr);
+            string str = sr.ReadToEnd();
+            (new FormText()).Show(str.Replace("\n", "\r\n"), "ChangeLog");   
         }
     }
 }
