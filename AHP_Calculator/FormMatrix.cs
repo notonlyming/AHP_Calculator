@@ -83,6 +83,7 @@ namespace AHP_Calculator
 
         private void BuildTable()
         {
+            const int TextMaxLength = 10;
             //build table
             int matrixSize = Factor.Length;
             for (int i = 0; i < matrixSize; i++)
@@ -91,7 +92,7 @@ namespace AHP_Calculator
                 {
                     textBoxes[i, j] = new TextBox
                     {
-                        MaxLength = 1,
+                        MaxLength = TextMaxLength,
                         Font = defaultFont,
                         TextAlign = HorizontalAlignment.Center,
                         Size = UniformSize

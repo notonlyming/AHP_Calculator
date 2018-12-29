@@ -277,7 +277,6 @@ namespace AHP_Calculator
             }
         }
 
-
         private void pairWiseToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (listBoxMatrix.SelectedIndex != -1)
