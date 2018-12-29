@@ -93,6 +93,7 @@ namespace AHP_Calculator
                     textBoxes[i, j] = new TextBox
                     {
                         MaxLength = TextMaxLength,
+                        ReadOnly = true;
                         Font = defaultFont,
                         TextAlign = HorizontalAlignment.Center,
                         Size = UniformSize
