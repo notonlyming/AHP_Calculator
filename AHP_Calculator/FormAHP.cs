@@ -854,13 +854,15 @@ namespace AHP_Calculator
 
         private void insertToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            bool HierarhrChanged = false;
             if (treeViewHierarchy.Nodes.Count < 1)
             {
                 //如果还没根节点
-                string rootText = Microsoft.VisualBasic.Interaction.InputBox("Please enter node text.", "Title needed");
+                string rootText = Microsoft.VisualBasic.Interaction.InputBox("Please enter root node text.", "Title needed");
                 if (!rootText.Equals(""))
                 {
                     treeViewHierarchy.Nodes.Add(rootText);
+                    HierarhrChanged = true;
                 }
             }
             else
@@ -869,12 +871,14 @@ namespace AHP_Calculator
                 if (treeViewHierarchy.SelectedNode != null)
                 {
                     //如果选择了要插入的节点
-                    string addSubStr = Microsoft.VisualBasic.Interaction.InputBox("Please enter root node text.", "Subject needed");
+                    string addSubStr = Microsoft.VisualBasic.Interaction.InputBox("You are now insert a node under "+ treeViewHierarchy.SelectedNode.Text
+                        +".\nPlease enter sub node text.", "Subject needed");
                     if (!addSubStr.Equals(""))
                     {
                         if (findTreeNodeByText(addSubStr) == null)
                         {
                             treeViewHierarchy.SelectedNode.Nodes.Add(addSubStr);
+                            HierarhrChanged = true;
                         }
                         else
                         {
@@ -888,6 +892,17 @@ namespace AHP_Calculator
                     MessageBox.Show("Please select a node to insert!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, 0);
                 }
                 treeViewHierarchy.SelectedNode = null;  //取消选择
+
+                //如果层次改变，则用户需要重新扫描矩阵
+                if (HierarhrChanged && listBoxMatrix.Items.Count>0)
+                {
+                    listBoxMatrix.Items.Clear();
+                    MatrixList.Clear();
+                    LayerList.Clear();
+                    MessageBox.Show("Oops, matrix info invalid because hierarchy changed. \n" +
+                        "Privious matrix removed, did you save?\nYou need to scan matrix later.", "Prompt",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, 0);
+                }
             }
         }
     }
