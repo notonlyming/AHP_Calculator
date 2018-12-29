@@ -335,7 +335,7 @@ namespace AHP_Calculator
                 }
             }
             FormText formText = new FormText();
-            formText.Show(stringBuilder.ToString());
+            formText.Show(stringBuilder.ToString(), "SurveyText");
         }
 
         private void listBoxMatrix_DoubleClick(object sender, EventArgs e)
@@ -693,7 +693,7 @@ namespace AHP_Calculator
             {
                 //显示结果
                 FormText formText = new FormText();
-                formText.Show(checkResultStr.ToString());
+                formText.Show(checkResultStr.ToString(), "MatrixCheckResult");
             }
 
             return AllPass;
@@ -708,7 +708,7 @@ namespace AHP_Calculator
         private void generateResultToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormText formText = new FormText();
-            formText.Show(GenerateReport());
+            formText.Show(GenerateReport(), "AHPCalculatingReport");
         }
 
         private string GenerateReport()

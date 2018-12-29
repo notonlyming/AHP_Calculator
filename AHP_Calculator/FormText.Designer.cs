@@ -34,7 +34,7 @@
             // textBoxText
             // 
             this.textBoxText.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBoxText.Location = new System.Drawing.Point(62, 39);
+            this.textBoxText.Location = new System.Drawing.Point(12, 40);
             this.textBoxText.Multiline = true;
             this.textBoxText.Name = "textBoxText";
             this.textBoxText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;

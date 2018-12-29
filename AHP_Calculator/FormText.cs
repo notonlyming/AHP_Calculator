@@ -29,10 +29,11 @@ namespace AHP_Calculator
             textBoxText.Width = this.Size.Width - 15;
         }
 
-        public void Show(string ShowText)
+        public void Show(string ShowText, string caption)
         {
             Show();
             textBoxText.Text = ShowText;
+            Text = caption;
         }
 
         private void FormText_Load(object sender, EventArgs e)
