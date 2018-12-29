@@ -160,27 +160,6 @@ namespace AHP_Calculator
             }
         }
 
-        private void hireToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rootToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (treeViewHierarchy.Nodes.Count < 1)
-            {
-                string rootText = Microsoft.VisualBasic.Interaction.InputBox("Please enter node text.", "Title needed");
-                if (!rootText.Equals(""))
-                {
-                    treeViewHierarchy.Nodes.Add(rootText);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Just one root at most!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, 0);
-            }
-        }
-
         private void delToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -188,27 +167,6 @@ namespace AHP_Calculator
             if (NodeSelect != null)
             {
                 treeViewHierarchy.Nodes.Remove(NodeSelect);
-            }
-        }
-
-        private void subToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (treeViewHierarchy.SelectedNode != null)
-            {
-                string addSubStr = Microsoft.VisualBasic.Interaction.InputBox("Please enter node text.", "Title needed");
-                if (!addSubStr.Equals(""))
-                {
-                    if (findTreeNodeByText(addSubStr) == null)
-                    {
-                        treeViewHierarchy.SelectedNode.Nodes.Add(addSubStr);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Same name node exist!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, 0);
-                        treeViewHierarchy.SelectedNode = findTreeNodeByText(addSubStr);
-                    }
-                }
-
             }
         }
 
@@ -884,6 +842,45 @@ namespace AHP_Calculator
         private void checkUpdateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://littleming.xyz/resource/AHP/");
+        }
+
+        private void insertToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (treeViewHierarchy.Nodes.Count < 1)
+            {
+                //如果还没根节点
+                string rootText = Microsoft.VisualBasic.Interaction.InputBox("Please enter node text.", "Title needed");
+                if (!rootText.Equals(""))
+                {
+                    treeViewHierarchy.Nodes.Add(rootText);
+                }
+            }
+            else
+            {
+                //如果有了根节点
+                if (treeViewHierarchy.SelectedNode != null)
+                {
+                    //如果选择了要插入的节点
+                    string addSubStr = Microsoft.VisualBasic.Interaction.InputBox("Please enter root node text.", "Subject needed");
+                    if (!addSubStr.Equals(""))
+                    {
+                        if (findTreeNodeByText(addSubStr) == null)
+                        {
+                            treeViewHierarchy.SelectedNode.Nodes.Add(addSubStr);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Same name node exist!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, 0);
+                            treeViewHierarchy.SelectedNode = findTreeNodeByText(addSubStr);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select a node to insert!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, 0);
+                }
+                treeViewHierarchy.SelectedNode = null;  //取消选择
+            }
         }
     }
 }
