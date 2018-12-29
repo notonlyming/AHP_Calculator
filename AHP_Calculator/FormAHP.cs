@@ -25,11 +25,18 @@ namespace AHP_Calculator
         private void Form1_Load(object sender, EventArgs e)
         {
             treeViewHierarchy.ExpandAll();  //把层次结构展开来看
-            if (treeViewHierarchy.Nodes.Count > 0)
+            HierarchyViewGoTop();  //回到顶层
+            MaximumSize = Size;  //窗口不可调
+        }
+
+        private void HierarchyViewGoTop()
+        {
+            if (treeViewHierarchy.Nodes.Count>0)
             {
                 treeViewHierarchy.SelectedNode = treeViewHierarchy.Nodes[0];
+                treeViewHierarchy.SelectedNode = null;
             }
-            MaximumSize = Size;  //窗口不可调
+            //先选第一个，然后取消选择
         }
 
         private void ScanLevel(bool ClearOrNot, bool PromptOrNot)
@@ -452,6 +459,8 @@ namespace AHP_Calculator
                 file.Close();
                 //导入层次结构
                 ImportHierarchyFromStr(CSVFileStr);
+                //回到顶层
+                HierarchyViewGoTop();
 
                 //导入数组
                 ImportMatrixFromStr(openFileDialog1.FileName);
