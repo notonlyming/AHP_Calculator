@@ -112,10 +112,14 @@
             this.checkToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.contextMenuStripForHierarchy = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.insertToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.delToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBoxHierarchy.SuspendLayout();
             this.groupBoxMatrix.SuspendLayout();
             this.menuStripMain.SuspendLayout();
             this.contextMenuStripForMatrixList.SuspendLayout();
+            this.contextMenuStripForHierarchy.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxHierarchy
@@ -189,6 +193,7 @@
             treeNode26});
             this.treeViewHierarchy.Size = new System.Drawing.Size(278, 425);
             this.treeViewHierarchy.TabIndex = 6;
+            this.treeViewHierarchy.MouseDown += new System.Windows.Forms.MouseEventHandler(this.treeViewHierarchy_MouseDown);
             // 
             // groupBoxMatrix
             // 
@@ -420,6 +425,28 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // contextMenuStripForHierarchy
+            // 
+            this.contextMenuStripForHierarchy.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.insertToolStripMenuItem1,
+            this.delToolStripMenuItem1});
+            this.contextMenuStripForHierarchy.Name = "contextMenuStripForHierarchy";
+            this.contextMenuStripForHierarchy.Size = new System.Drawing.Size(110, 48);
+            // 
+            // insertToolStripMenuItem1
+            // 
+            this.insertToolStripMenuItem1.Name = "insertToolStripMenuItem1";
+            this.insertToolStripMenuItem1.Size = new System.Drawing.Size(109, 22);
+            this.insertToolStripMenuItem1.Text = "Insert";
+            this.insertToolStripMenuItem1.Click += new System.EventHandler(this.insertToolStripMenuItem1_Click);
+            // 
+            // delToolStripMenuItem1
+            // 
+            this.delToolStripMenuItem1.Name = "delToolStripMenuItem1";
+            this.delToolStripMenuItem1.Size = new System.Drawing.Size(109, 22);
+            this.delToolStripMenuItem1.Text = "Del";
+            this.delToolStripMenuItem1.Click += new System.EventHandler(this.delToolStripMenuItem1_Click);
+            // 
             // FormAHP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -442,6 +469,7 @@
             this.menuStripMain.ResumeLayout(false);
             this.menuStripMain.PerformLayout();
             this.contextMenuStripForMatrixList.ResumeLayout(false);
+            this.contextMenuStripForHierarchy.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -479,6 +507,9 @@
         private System.Windows.Forms.ToolStripMenuItem quikStartToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem checkUpdateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem insertToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripForHierarchy;
+        private System.Windows.Forms.ToolStripMenuItem insertToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem delToolStripMenuItem1;
     }
 }
 

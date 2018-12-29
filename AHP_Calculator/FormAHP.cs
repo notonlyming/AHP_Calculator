@@ -31,7 +31,7 @@ namespace AHP_Calculator
 
         private void HierarchyViewGoTop()
         {
-            if (treeViewHierarchy.Nodes.Count>0)
+            if (treeViewHierarchy.Nodes.Count > 0)
             {
                 treeViewHierarchy.SelectedNode = treeViewHierarchy.Nodes[0];
                 treeViewHierarchy.SelectedNode = null;
@@ -308,8 +308,8 @@ namespace AHP_Calculator
         private void exportTextToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool GetAnswer =
-                MessageBox.Show("Export answer or not? ", "Export type", 
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question,MessageBoxDefaultButton.Button2) == DialogResult.Yes;
+                MessageBox.Show("Export answer or not? ", "Export type",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes;
             StringBuilder stringBuilder = new StringBuilder();
             //取每个矩阵出来进行导出
             for (int index = 0; index < listBoxMatrix.Items.Count; index++)
@@ -874,8 +874,8 @@ namespace AHP_Calculator
                 if (treeViewHierarchy.SelectedNode != null)
                 {
                     //如果选择了要插入的节点
-                    string addSubStr = Microsoft.VisualBasic.Interaction.InputBox("You are now insert a node under "+ treeViewHierarchy.SelectedNode.Text
-                        +".\nPlease enter sub node text.", "Subject needed");
+                    string addSubStr = Microsoft.VisualBasic.Interaction.InputBox("You are now insert a node under " + treeViewHierarchy.SelectedNode.Text
+                        + ".\nPlease enter sub node text.", "Subject needed");
                     if (!addSubStr.Equals(""))
                     {
                         if (findTreeNodeByText(addSubStr) == null)
@@ -897,7 +897,7 @@ namespace AHP_Calculator
                 treeViewHierarchy.SelectedNode = null;  //取消选择
 
                 //如果层次改变，则用户需要重新扫描矩阵
-                if (HierarhrChanged && listBoxMatrix.Items.Count>0)
+                if (HierarhrChanged && listBoxMatrix.Items.Count > 0)
                 {
                     listBoxMatrix.Items.Clear();
                     MatrixList.Clear();
@@ -906,6 +906,25 @@ namespace AHP_Calculator
                         "Privious matrix removed, did you save?\nYou need to scan matrix later.", "Prompt",
                         MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, 0);
                 }
+            }
+        }
+
+        private void insertToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            insertToolStripMenuItem_Click(sender, e);
+        }
+
+        private void delToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            delToolStripMenuItem_Click(sender, e);
+        }
+
+        private void treeViewHierarchy_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                contextMenuStripForHierarchy.Show(Location.X + groupBoxHierarchy.Location.X + treeViewHierarchy.Location.X + e.X + 10,
+                    Location.Y + groupBoxHierarchy.Location.Y + treeViewHierarchy.Location.Y + e.Y + 33);
             }
         }
     }
