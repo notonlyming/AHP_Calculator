@@ -130,13 +130,18 @@ namespace AHP_Calculator
             }
         }
 
-        public string getAllQuestionText()
+        public string getAllQuestionText(bool needAnswerOrNot)
         {
             //取出所有标签文本合成并返回
             StringBuilder stringBuilder = new StringBuilder();
-            foreach (var questionLabel in labelQuestions)
+            for (int i = 0; i < labelQuestions.Length; i++)
             {
-                stringBuilder.Append(questionLabel.Text + "\r\n\r\n");
+                stringBuilder.Append((needAnswerOrNot?"Q: ":"") + labelQuestions[i].Text);
+                if (needAnswerOrNot)
+                {
+                    stringBuilder.Append("\r\nA: " + ComboBoxReverseOrNot[i].Text + "\t " + ComboBoxImportantTimes[i].Text);
+                }
+                stringBuilder.Append("\r\n\r\n");
             }
             return stringBuilder.ToString();
         }

@@ -307,6 +307,9 @@ namespace AHP_Calculator
 
         private void exportTextToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            bool GetAnswer =
+                MessageBox.Show("Export answer or not? ", "Export type", 
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question,MessageBoxDefaultButton.Button2) == DialogResult.Yes;
             StringBuilder stringBuilder = new StringBuilder();
             //取每个矩阵出来进行导出
             for (int index = 0; index < listBoxMatrix.Items.Count; index++)
@@ -327,7 +330,7 @@ namespace AHP_Calculator
                     FormSurvey formSurvey = new FormSurvey(FactorsString, CurrentLayer[0].Parent.Text, CurrentMatrix);
                     formSurvey.Show();
                     stringBuilder.Append("------------------------------------------------\r\n");
-                    stringBuilder.Append(formSurvey.getAllQuestionText());
+                    stringBuilder.Append(formSurvey.getAllQuestionText(needAnswerOrNot: GetAnswer));
                     formSurvey.Close();
                 }
             }
