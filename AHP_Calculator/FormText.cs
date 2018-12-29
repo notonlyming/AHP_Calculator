@@ -24,9 +24,9 @@ namespace AHP_Calculator
         
         private void FullSizeText()
         {
-            textBoxText.Location = new Point(0, 0); //移动至左上角
-            textBoxText.Height = this.Size.Height - 37;
-            textBoxText.Width = this.Size.Width - 15;
+            textBoxText.Location = new Point(0, menuStrip1.Height); //移动至左上角
+            textBoxText.Height = this.Size.Height- menuStrip1.Height - 39;
+            textBoxText.Width = this.Size.Width - 16;
         }
 
         public void Show(string ShowText, string caption)
@@ -39,6 +39,17 @@ namespace AHP_Calculator
         private void FormText_Load(object sender, EventArgs e)
         {
             FullSizeText();
+        }
+
+        private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.FileName = Text;
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                System.IO.StreamWriter file = System.IO.File.CreateText(saveFileDialog1.FileName);
+                file.Write(textBoxText.Text);
+                file.Close();
+            }
         }
     }
 }
