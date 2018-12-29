@@ -100,13 +100,13 @@
             this.scanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.outPortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.surveyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.OperateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pairWiseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exportTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateResultToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.quikStartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkUpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripForMatrixList = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.pairWiseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -114,8 +114,6 @@
             this.checkToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.quikStartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.checkUpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBoxHierarchy.SuspendLayout();
             this.groupBoxMatrix.SuspendLayout();
             this.menuStripMain.SuspendLayout();
@@ -222,7 +220,7 @@
             this.fileToolStripMenuItem,
             this.hireToolStripMenuItem,
             this.matrixToolStripMenuItem,
-            this.surveyToolStripMenuItem,
+            this.OperateToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStripMain.Location = new System.Drawing.Point(0, 0);
             this.menuStripMain.Name = "menuStripMain";
@@ -278,7 +276,7 @@
             this.subToolStripMenuItem,
             this.rootToolStripMenuItem});
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.addToolStripMenuItem.Text = "Add";
             // 
             // subToolStripMenuItem
@@ -298,14 +296,14 @@
             // delToolStripMenuItem
             // 
             this.delToolStripMenuItem.Name = "delToolStripMenuItem";
-            this.delToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.delToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.delToolStripMenuItem.Text = "Del";
             this.delToolStripMenuItem.Click += new System.EventHandler(this.delToolStripMenuItem_Click);
             // 
             // clearToolStripMenuItem
             // 
             this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.clearToolStripMenuItem.Text = "Clear";
             this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
             // 
@@ -314,9 +312,7 @@
             this.matrixToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.scanToolStripMenuItem,
             this.showToolStripMenuItem,
-            this.checkToolStripMenuItem,
-            this.importToolStripMenuItem,
-            this.outPortToolStripMenuItem});
+            this.checkToolStripMenuItem});
             this.matrixToolStripMenuItem.Name = "matrixToolStripMenuItem";
             this.matrixToolStripMenuItem.Size = new System.Drawing.Size(57, 21);
             this.matrixToolStripMenuItem.Text = "Matrix";
@@ -342,29 +338,15 @@
             this.checkToolStripMenuItem.Text = "Check";
             this.checkToolStripMenuItem.Click += new System.EventHandler(this.checkToolStripMenuItem_Click);
             // 
-            // importToolStripMenuItem
+            // OperateToolStripMenuItem
             // 
-            this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.importToolStripMenuItem.Text = "Import";
-            this.importToolStripMenuItem.Click += new System.EventHandler(this.importToolStripMenuItem_Click);
-            // 
-            // outPortToolStripMenuItem
-            // 
-            this.outPortToolStripMenuItem.Name = "outPortToolStripMenuItem";
-            this.outPortToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.outPortToolStripMenuItem.Text = "Export";
-            this.outPortToolStripMenuItem.Click += new System.EventHandler(this.outPortToolStripMenuItem_Click);
-            // 
-            // surveyToolStripMenuItem
-            // 
-            this.surveyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.OperateToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pairWiseToolStripMenuItem1,
             this.exportTextToolStripMenuItem,
             this.generateResultToolStripMenuItem});
-            this.surveyToolStripMenuItem.Name = "surveyToolStripMenuItem";
-            this.surveyToolStripMenuItem.Size = new System.Drawing.Size(58, 21);
-            this.surveyToolStripMenuItem.Text = "Survey";
+            this.OperateToolStripMenuItem.Name = "OperateToolStripMenuItem";
+            this.OperateToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.OperateToolStripMenuItem.Text = "Operate";
             // 
             // pairWiseToolStripMenuItem1
             // 
@@ -377,7 +359,7 @@
             // 
             this.exportTextToolStripMenuItem.Name = "exportTextToolStripMenuItem";
             this.exportTextToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.exportTextToolStripMenuItem.Text = "Export text";
+            this.exportTextToolStripMenuItem.Text = "Export survey";
             this.exportTextToolStripMenuItem.Click += new System.EventHandler(this.exportTextToolStripMenuItem_Click);
             // 
             // generateResultToolStripMenuItem
@@ -396,6 +378,20 @@
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(47, 21);
             this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // quikStartToolStripMenuItem
+            // 
+            this.quikStartToolStripMenuItem.Name = "quikStartToolStripMenuItem";
+            this.quikStartToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.quikStartToolStripMenuItem.Text = "Quik start";
+            this.quikStartToolStripMenuItem.Click += new System.EventHandler(this.quikStartToolStripMenuItem_Click);
+            // 
+            // checkUpdateToolStripMenuItem
+            // 
+            this.checkUpdateToolStripMenuItem.Name = "checkUpdateToolStripMenuItem";
+            this.checkUpdateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.checkUpdateToolStripMenuItem.Text = "Check update";
+            this.checkUpdateToolStripMenuItem.Click += new System.EventHandler(this.checkUpdateToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -442,20 +438,6 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // quikStartToolStripMenuItem
-            // 
-            this.quikStartToolStripMenuItem.Name = "quikStartToolStripMenuItem";
-            this.quikStartToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.quikStartToolStripMenuItem.Text = "Quik start";
-            this.quikStartToolStripMenuItem.Click += new System.EventHandler(this.quikStartToolStripMenuItem_Click);
-            // 
-            // checkUpdateToolStripMenuItem
-            // 
-            this.checkUpdateToolStripMenuItem.Name = "checkUpdateToolStripMenuItem";
-            this.checkUpdateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.checkUpdateToolStripMenuItem.Text = "Check update";
-            this.checkUpdateToolStripMenuItem.Click += new System.EventHandler(this.checkUpdateToolStripMenuItem_Click);
             // 
             // FormAHP
             // 
@@ -507,7 +489,7 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripForMatrixList;
-        private System.Windows.Forms.ToolStripMenuItem surveyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem OperateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pairWiseToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem exportTextToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pairWiseToolStripMenuItem;
@@ -515,8 +497,6 @@
         private System.Windows.Forms.ToolStripMenuItem checkToolStripMenuItem1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem outPortToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem generateResultToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quikStartToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem checkUpdateToolStripMenuItem;
