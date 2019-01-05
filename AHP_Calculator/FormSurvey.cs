@@ -69,8 +69,8 @@ namespace AHP_Calculator
                 //add question
                 labelQuestions[i] = new Label
                 {
-                    Text = factors[positionInPairMatrix[0]] + " 和 " + factors[positionInPairMatrix[1]] +
-                    " 在 " + parentFactor + " 方面那个更重要，重要多少倍？",
+                    Text = "Consider " + factors[positionInPairMatrix[0]] + " and " + factors[positionInPairMatrix[1]] +
+                    " in " + parentFactor + " aspect, which one is more important? How many times?",
                     AutoSize = true,
                     Font = defaultFont
                 };
