@@ -8,10 +8,10 @@ AHP Calculator是层次分析法计算器。它能够实现层次的建立，问
 # 如何使用  
 
 ## 下载安装
-程序使用了ClickOnce部署方法，目的是方便更新。不过好像把更新文件上传到服务器也挺累的2333。以后可能会采用在release直接释出的方法。现在你可以<a href="https://littleming.xyz/resource/AHP/index.html" target="_blank">点击这里去安装</a>
+程序使用了ClickOnce部署方法，目的是方便更新。不过好像把更新文件上传到服务器也挺累的2333。现在你可以在<a href="https://github.com/notonlyming/AHP_Calculator/releases" target="_blank">Release页面</a>下载
 
 ## 快速入门 🎓
-在上面这个网址点击安装，随后浏览器将会下载Steup.exe文件。双击安装，期间会弹出筛选器的安全提示。  
+在上面这个网址点击下载可执行文件。双击打开，期间可能会弹出筛选器的安全提示。  
 <div align="center"><img src="images/warning.png"></div>  
 这是由于程序没有购买证书，但程序来源是正确。因此，点击详细信息和仍然运行即可。安装完成后，安装程序会在桌面释放图标，并且自动打开程序。
 
