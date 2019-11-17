@@ -12,11 +12,11 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile />
     <PublishUrl>D:\workspace\AHP\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Web</InstallFrom>
+    <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Background</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
@@ -24,7 +24,6 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>false</MapFileExtensions>
-    <InstallUrl>https://littleming.xyz/resource/AHP/</InstallUrl>
     <UpdateUrl>https://littleming.xyz/resource/AHP/</UpdateUrl>
     <SupportUrl>https://littleming.xyz/resource/AHP/</SupportUrl>
     <ErrorReportUrl>https://littleming.xyz/resource/AHP/AHPCalHelp.htm</ErrorReportUrl>
@@ -69,7 +68,7 @@
     <ManifestKeyFile>AHP_Calculator_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
+    <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
@@ -78,13 +77,14 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>AHP_Calculator_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>bird.ico</ApplicationIcon>
@@ -143,6 +143,9 @@
     <EmbeddedResource Include="FormAHP.resx">
       <DependentUpon>FormAHP.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormAHP.zh-CN.resx">
+      <DependentUpon>FormAHP.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMatrix.resx">
       <DependentUpon>FormMatrix.cs</DependentUpon>
     </EmbeddedResource>
@@ -162,7 +165,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="AHP_Calculator_TemporaryKey.pfx" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

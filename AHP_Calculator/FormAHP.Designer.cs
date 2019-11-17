@@ -29,57 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("基坑变形失稳");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("基坑突涌");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("基坑坍塌");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("基坑问题", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3});
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("维修风险");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("超过使用年限");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("保养不到位");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("盾构", new System.Windows.Forms.TreeNode[] {
-            treeNode5,
-            treeNode6,
-            treeNode7});
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("防水层失效");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("支撑体系不稳定");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("地面底层裂缝");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("荷载堆积");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("注浆土体位移");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("周围地表变形过大");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("技术", new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode8,
-            treeNode9,
-            treeNode10,
-            treeNode11,
-            treeNode12,
-            treeNode13,
-            treeNode14});
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("自然灾害");
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("土质");
-            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("地下空洞");
-            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("水文条件");
-            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("断裂构造面");
-            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("地质", new System.Windows.Forms.TreeNode[] {
-            treeNode17,
-            treeNode18,
-            treeNode19,
-            treeNode20});
-            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("周边建筑物");
-            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("地下管线设施");
-            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("周边设施", new System.Windows.Forms.TreeNode[] {
-            treeNode22,
-            treeNode23});
-            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("环境", new System.Windows.Forms.TreeNode[] {
-            treeNode16,
-            treeNode21,
-            treeNode24});
-            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("风险", new System.Windows.Forms.TreeNode[] {
-            treeNode15,
-            treeNode25});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAHP));
             this.groupBoxHierarchy = new System.Windows.Forms.GroupBox();
             this.treeViewHierarchy = new System.Windows.Forms.TreeView();
@@ -105,6 +54,7 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quikStartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkUpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showVersionChangeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripForMatrixList = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.pairWiseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -115,7 +65,6 @@
             this.contextMenuStripForHierarchy = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.insertToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.delToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.showVersionChangeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBoxHierarchy.SuspendLayout();
             this.groupBoxMatrix.SuspendLayout();
             this.menuStripMain.SuspendLayout();
@@ -125,352 +74,254 @@
             // 
             // groupBoxHierarchy
             // 
+            resources.ApplyResources(this.groupBoxHierarchy, "groupBoxHierarchy");
             this.groupBoxHierarchy.Controls.Add(this.treeViewHierarchy);
-            this.groupBoxHierarchy.Location = new System.Drawing.Point(12, 30);
             this.groupBoxHierarchy.Name = "groupBoxHierarchy";
-            this.groupBoxHierarchy.Size = new System.Drawing.Size(294, 453);
-            this.groupBoxHierarchy.TabIndex = 7;
             this.groupBoxHierarchy.TabStop = false;
-            this.groupBoxHierarchy.Text = "Hierarchy";
             // 
             // treeViewHierarchy
             // 
-            this.treeViewHierarchy.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.treeViewHierarchy.Location = new System.Drawing.Point(9, 19);
+            resources.ApplyResources(this.treeViewHierarchy, "treeViewHierarchy");
             this.treeViewHierarchy.Name = "treeViewHierarchy";
-            treeNode1.Name = "节点5";
-            treeNode1.Text = "基坑变形失稳";
-            treeNode2.Name = "节点6";
-            treeNode2.Text = "基坑突涌";
-            treeNode3.Name = "节点12";
-            treeNode3.Text = "基坑坍塌";
-            treeNode4.Name = "节点3";
-            treeNode4.Text = "基坑问题";
-            treeNode5.Name = "节点7";
-            treeNode5.Text = "维修风险";
-            treeNode6.Name = "节点8";
-            treeNode6.Text = "超过使用年限";
-            treeNode7.Name = "节点18";
-            treeNode7.Text = "保养不到位";
-            treeNode8.Name = "节点4";
-            treeNode8.Text = "盾构";
-            treeNode9.Name = "节点13";
-            treeNode9.Text = "防水层失效";
-            treeNode10.Name = "节点14";
-            treeNode10.Text = "支撑体系不稳定";
-            treeNode11.Name = "节点15";
-            treeNode11.Text = "地面底层裂缝";
-            treeNode12.Name = "节点16";
-            treeNode12.Text = "荷载堆积";
-            treeNode13.Name = "节点17";
-            treeNode13.Text = "注浆土体位移";
-            treeNode14.Name = "节点19";
-            treeNode14.Text = "周围地表变形过大";
-            treeNode15.Name = "节点1";
-            treeNode15.Text = "技术";
-            treeNode16.Name = "节点9";
-            treeNode16.Text = "自然灾害";
-            treeNode17.Name = "节点20";
-            treeNode17.Text = "土质";
-            treeNode18.Name = "节点21";
-            treeNode18.Text = "地下空洞";
-            treeNode19.Name = "节点22";
-            treeNode19.Text = "水文条件";
-            treeNode20.Name = "节点23";
-            treeNode20.Text = "断裂构造面";
-            treeNode21.Name = "节点10";
-            treeNode21.Text = "地质";
-            treeNode22.Name = "节点24";
-            treeNode22.Text = "周边建筑物";
-            treeNode23.Name = "节点25";
-            treeNode23.Text = "地下管线设施";
-            treeNode24.Name = "节点11";
-            treeNode24.Text = "周边设施";
-            treeNode25.Name = "节点2";
-            treeNode25.Text = "环境";
-            treeNode26.Name = "节点0";
-            treeNode26.Text = "风险";
             this.treeViewHierarchy.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode26});
-            this.treeViewHierarchy.Size = new System.Drawing.Size(278, 425);
-            this.treeViewHierarchy.TabIndex = 6;
+            ((System.Windows.Forms.TreeNode)(resources.GetObject("treeViewHierarchy.Nodes")))});
             this.treeViewHierarchy.MouseDown += new System.Windows.Forms.MouseEventHandler(this.treeViewHierarchy_MouseDown);
             // 
             // groupBoxMatrix
             // 
+            resources.ApplyResources(this.groupBoxMatrix, "groupBoxMatrix");
             this.groupBoxMatrix.Controls.Add(this.listBoxMatrix);
-            this.groupBoxMatrix.Location = new System.Drawing.Point(312, 30);
             this.groupBoxMatrix.Name = "groupBoxMatrix";
-            this.groupBoxMatrix.Size = new System.Drawing.Size(273, 453);
-            this.groupBoxMatrix.TabIndex = 8;
             this.groupBoxMatrix.TabStop = false;
-            this.groupBoxMatrix.Text = "Matrix";
             // 
             // listBoxMatrix
             // 
-            this.listBoxMatrix.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            resources.ApplyResources(this.listBoxMatrix, "listBoxMatrix");
             this.listBoxMatrix.FormattingEnabled = true;
-            this.listBoxMatrix.ItemHeight = 21;
-            this.listBoxMatrix.Location = new System.Drawing.Point(11, 20);
             this.listBoxMatrix.Name = "listBoxMatrix";
-            this.listBoxMatrix.Size = new System.Drawing.Size(254, 424);
-            this.listBoxMatrix.TabIndex = 0;
             this.listBoxMatrix.DoubleClick += new System.EventHandler(this.listBoxMatrix_DoubleClick);
             this.listBoxMatrix.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listBoxMatrix_MouseDown);
             // 
             // menuStripMain
             // 
+            resources.ApplyResources(this.menuStripMain, "menuStripMain");
             this.menuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.hireToolStripMenuItem,
             this.matrixToolStripMenuItem,
             this.OperateToolStripMenuItem,
             this.helpToolStripMenuItem});
-            this.menuStripMain.Location = new System.Drawing.Point(0, 0);
             this.menuStripMain.Name = "menuStripMain";
-            this.menuStripMain.Size = new System.Drawing.Size(599, 25);
-            this.menuStripMain.TabIndex = 9;
-            this.menuStripMain.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
+            resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openToolStripMenuItem,
             this.saveToolStripMenuItem,
             this.quitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(39, 21);
-            this.fileToolStripMenuItem.Text = "File";
             // 
             // openToolStripMenuItem
             // 
+            resources.ApplyResources(this.openToolStripMenuItem, "openToolStripMenuItem");
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
-            this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
+            resources.ApplyResources(this.saveToolStripMenuItem, "saveToolStripMenuItem");
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
-            this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // quitToolStripMenuItem
             // 
+            resources.ApplyResources(this.quitToolStripMenuItem, "quitToolStripMenuItem");
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
-            this.quitToolStripMenuItem.Text = "Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
             // hireToolStripMenuItem
             // 
+            resources.ApplyResources(this.hireToolStripMenuItem, "hireToolStripMenuItem");
             this.hireToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.insertToolStripMenuItem,
             this.delToolStripMenuItem,
             this.clearToolStripMenuItem});
             this.hireToolStripMenuItem.Name = "hireToolStripMenuItem";
-            this.hireToolStripMenuItem.Size = new System.Drawing.Size(75, 21);
-            this.hireToolStripMenuItem.Text = "Hierarchy";
             // 
             // insertToolStripMenuItem
             // 
+            resources.ApplyResources(this.insertToolStripMenuItem, "insertToolStripMenuItem");
             this.insertToolStripMenuItem.Name = "insertToolStripMenuItem";
-            this.insertToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
-            this.insertToolStripMenuItem.Text = "Insert";
             this.insertToolStripMenuItem.Click += new System.EventHandler(this.insertToolStripMenuItem_Click);
             // 
             // delToolStripMenuItem
             // 
+            resources.ApplyResources(this.delToolStripMenuItem, "delToolStripMenuItem");
             this.delToolStripMenuItem.Name = "delToolStripMenuItem";
-            this.delToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
-            this.delToolStripMenuItem.Text = "Del";
             this.delToolStripMenuItem.Click += new System.EventHandler(this.delToolStripMenuItem_Click);
             // 
             // clearToolStripMenuItem
             // 
+            resources.ApplyResources(this.clearToolStripMenuItem, "clearToolStripMenuItem");
             this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
-            this.clearToolStripMenuItem.Text = "Clear";
             this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
             // 
             // matrixToolStripMenuItem
             // 
+            resources.ApplyResources(this.matrixToolStripMenuItem, "matrixToolStripMenuItem");
             this.matrixToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.scanToolStripMenuItem,
             this.showToolStripMenuItem,
             this.checkToolStripMenuItem});
             this.matrixToolStripMenuItem.Name = "matrixToolStripMenuItem";
-            this.matrixToolStripMenuItem.Size = new System.Drawing.Size(57, 21);
-            this.matrixToolStripMenuItem.Text = "Matrix";
             // 
             // scanToolStripMenuItem
             // 
+            resources.ApplyResources(this.scanToolStripMenuItem, "scanToolStripMenuItem");
             this.scanToolStripMenuItem.Name = "scanToolStripMenuItem";
-            this.scanToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
-            this.scanToolStripMenuItem.Text = "Scan";
             this.scanToolStripMenuItem.Click += new System.EventHandler(this.scanToolStripMenuItem_Click);
             // 
             // showToolStripMenuItem
             // 
+            resources.ApplyResources(this.showToolStripMenuItem, "showToolStripMenuItem");
             this.showToolStripMenuItem.Name = "showToolStripMenuItem";
-            this.showToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
-            this.showToolStripMenuItem.Text = "Show";
             this.showToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
             // 
             // checkToolStripMenuItem
             // 
+            resources.ApplyResources(this.checkToolStripMenuItem, "checkToolStripMenuItem");
             this.checkToolStripMenuItem.Name = "checkToolStripMenuItem";
-            this.checkToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
-            this.checkToolStripMenuItem.Text = "Check";
             this.checkToolStripMenuItem.Click += new System.EventHandler(this.checkToolStripMenuItem_Click);
             // 
             // OperateToolStripMenuItem
             // 
+            resources.ApplyResources(this.OperateToolStripMenuItem, "OperateToolStripMenuItem");
             this.OperateToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pairWiseToolStripMenuItem1,
             this.exportTextToolStripMenuItem,
             this.generateResultToolStripMenuItem});
             this.OperateToolStripMenuItem.Name = "OperateToolStripMenuItem";
-            this.OperateToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.OperateToolStripMenuItem.Text = "Operate";
             // 
             // pairWiseToolStripMenuItem1
             // 
+            resources.ApplyResources(this.pairWiseToolStripMenuItem1, "pairWiseToolStripMenuItem1");
             this.pairWiseToolStripMenuItem1.Name = "pairWiseToolStripMenuItem1";
-            this.pairWiseToolStripMenuItem1.Size = new System.Drawing.Size(170, 22);
-            this.pairWiseToolStripMenuItem1.Text = "Pair wise";
             this.pairWiseToolStripMenuItem1.Click += new System.EventHandler(this.pairWiseToolStripMenuItem1_Click);
             // 
             // exportTextToolStripMenuItem
             // 
+            resources.ApplyResources(this.exportTextToolStripMenuItem, "exportTextToolStripMenuItem");
             this.exportTextToolStripMenuItem.Name = "exportTextToolStripMenuItem";
-            this.exportTextToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.exportTextToolStripMenuItem.Text = "Export survey";
             this.exportTextToolStripMenuItem.Click += new System.EventHandler(this.exportTextToolStripMenuItem_Click);
             // 
             // generateResultToolStripMenuItem
             // 
+            resources.ApplyResources(this.generateResultToolStripMenuItem, "generateResultToolStripMenuItem");
             this.generateResultToolStripMenuItem.Name = "generateResultToolStripMenuItem";
-            this.generateResultToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.generateResultToolStripMenuItem.Text = "Generate report";
             this.generateResultToolStripMenuItem.Click += new System.EventHandler(this.generateResultToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
+            resources.ApplyResources(this.helpToolStripMenuItem, "helpToolStripMenuItem");
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.quikStartToolStripMenuItem,
             this.checkUpdateToolStripMenuItem,
             this.showVersionChangeToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(47, 21);
-            this.helpToolStripMenuItem.Text = "Help";
             // 
             // quikStartToolStripMenuItem
             // 
+            resources.ApplyResources(this.quikStartToolStripMenuItem, "quikStartToolStripMenuItem");
             this.quikStartToolStripMenuItem.Name = "quikStartToolStripMenuItem";
-            this.quikStartToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
-            this.quikStartToolStripMenuItem.Text = "Quik start";
             this.quikStartToolStripMenuItem.Click += new System.EventHandler(this.quikStartToolStripMenuItem_Click);
             // 
             // checkUpdateToolStripMenuItem
             // 
+            resources.ApplyResources(this.checkUpdateToolStripMenuItem, "checkUpdateToolStripMenuItem");
             this.checkUpdateToolStripMenuItem.Name = "checkUpdateToolStripMenuItem";
-            this.checkUpdateToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
-            this.checkUpdateToolStripMenuItem.Text = "Check update";
             this.checkUpdateToolStripMenuItem.Click += new System.EventHandler(this.checkUpdateToolStripMenuItem_Click);
+            // 
+            // showVersionChangeToolStripMenuItem
+            // 
+            resources.ApplyResources(this.showVersionChangeToolStripMenuItem, "showVersionChangeToolStripMenuItem");
+            this.showVersionChangeToolStripMenuItem.Name = "showVersionChangeToolStripMenuItem";
+            this.showVersionChangeToolStripMenuItem.Click += new System.EventHandler(this.showVersionChangeToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
+            resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
-            this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // contextMenuStripForMatrixList
             // 
+            resources.ApplyResources(this.contextMenuStripForMatrixList, "contextMenuStripForMatrixList");
             this.contextMenuStripForMatrixList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pairWiseToolStripMenuItem,
             this.scanToolStripMenuItem1,
             this.checkToolStripMenuItem1});
             this.contextMenuStripForMatrixList.Name = "contextMenuStrip1";
-            this.contextMenuStripForMatrixList.Size = new System.Drawing.Size(128, 70);
             // 
             // pairWiseToolStripMenuItem
             // 
+            resources.ApplyResources(this.pairWiseToolStripMenuItem, "pairWiseToolStripMenuItem");
             this.pairWiseToolStripMenuItem.Name = "pairWiseToolStripMenuItem";
-            this.pairWiseToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
-            this.pairWiseToolStripMenuItem.Text = "Pair wise";
             this.pairWiseToolStripMenuItem.Click += new System.EventHandler(this.pairWiseToolStripMenuItem_Click);
             // 
             // scanToolStripMenuItem1
             // 
+            resources.ApplyResources(this.scanToolStripMenuItem1, "scanToolStripMenuItem1");
             this.scanToolStripMenuItem1.Name = "scanToolStripMenuItem1";
-            this.scanToolStripMenuItem1.Size = new System.Drawing.Size(127, 22);
-            this.scanToolStripMenuItem1.Text = "Scan";
             this.scanToolStripMenuItem1.Click += new System.EventHandler(this.scanToolStripMenuItem1_Click);
             // 
             // checkToolStripMenuItem1
             // 
+            resources.ApplyResources(this.checkToolStripMenuItem1, "checkToolStripMenuItem1");
             this.checkToolStripMenuItem1.Name = "checkToolStripMenuItem1";
-            this.checkToolStripMenuItem1.Size = new System.Drawing.Size(127, 22);
-            this.checkToolStripMenuItem1.Text = "Check";
             this.checkToolStripMenuItem1.Click += new System.EventHandler(this.checkToolStripMenuItem1_Click);
             // 
             // saveFileDialog1
             // 
             this.saveFileDialog1.DefaultExt = "csv";
-            this.saveFileDialog1.Filter = "csv 逗号分隔符文件|*.csv";
+            resources.ApplyResources(this.saveFileDialog1, "saveFileDialog1");
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            resources.ApplyResources(this.openFileDialog1, "openFileDialog1");
             // 
             // contextMenuStripForHierarchy
             // 
+            resources.ApplyResources(this.contextMenuStripForHierarchy, "contextMenuStripForHierarchy");
             this.contextMenuStripForHierarchy.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.insertToolStripMenuItem1,
             this.delToolStripMenuItem1});
             this.contextMenuStripForHierarchy.Name = "contextMenuStripForHierarchy";
-            this.contextMenuStripForHierarchy.Size = new System.Drawing.Size(110, 48);
             // 
             // insertToolStripMenuItem1
             // 
+            resources.ApplyResources(this.insertToolStripMenuItem1, "insertToolStripMenuItem1");
             this.insertToolStripMenuItem1.Name = "insertToolStripMenuItem1";
-            this.insertToolStripMenuItem1.Size = new System.Drawing.Size(109, 22);
-            this.insertToolStripMenuItem1.Text = "Insert";
             this.insertToolStripMenuItem1.Click += new System.EventHandler(this.insertToolStripMenuItem1_Click);
             // 
             // delToolStripMenuItem1
             // 
+            resources.ApplyResources(this.delToolStripMenuItem1, "delToolStripMenuItem1");
             this.delToolStripMenuItem1.Name = "delToolStripMenuItem1";
-            this.delToolStripMenuItem1.Size = new System.Drawing.Size(109, 22);
-            this.delToolStripMenuItem1.Text = "Del";
             this.delToolStripMenuItem1.Click += new System.EventHandler(this.delToolStripMenuItem1_Click);
-            // 
-            // showVersionChangeToolStripMenuItem
-            // 
-            this.showVersionChangeToolStripMenuItem.Name = "showVersionChangeToolStripMenuItem";
-            this.showVersionChangeToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
-            this.showVersionChangeToolStripMenuItem.Text = "Show version change";
-            this.showVersionChangeToolStripMenuItem.Click += new System.EventHandler(this.showVersionChangeToolStripMenuItem_Click);
             // 
             // FormAHP
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(599, 495);
             this.Controls.Add(this.groupBoxMatrix);
             this.Controls.Add(this.groupBoxHierarchy);
             this.Controls.Add(this.menuStripMain);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStripMain;
             this.MaximizeBox = false;
             this.Name = "FormAHP";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AHP Calculator";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormAHP_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBoxHierarchy.ResumeLayout(false);

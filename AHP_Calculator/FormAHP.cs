@@ -850,12 +850,12 @@ namespace AHP_Calculator
 
         private void quikStartToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://littleming.xyz/resource/AHP/AHPCalHelp.htm");
+            System.Diagnostics.Process.Start("https://github.com/notonlyming/AHP_Calculator");
         }
 
         private void checkUpdateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://littleming.xyz/resource/AHP/");
+            System.Diagnostics.Process.Start("https://github.com/notonlyming/AHP_Calculator/releases");
         }
 
         private void insertToolStripMenuItem_Click(object sender, EventArgs e)
